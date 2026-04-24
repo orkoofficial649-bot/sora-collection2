@@ -11,28 +11,33 @@
         body {
             font-family: 'Poppins', 'Hind Siliguri', sans-serif;
             scroll-behavior: smooth;
-            /* Background Pink kora hoyeche */
-            background: #FFF0F5; 
+            background: #FFF0F5; /* Requirement: Pink Background */
             color: #2D3436;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Scrolling Watermark Effect - Requirement */
-        .scrolling-watermark {
+        /* Watermark Styles */
+        .watermark-container {
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(-15deg);
-            font-family: 'Playfair Display', serif;
-            font-size: 8vw;
-            font-weight: 900;
-            color: rgba(236, 64, 122, 0.05); /* Ekdom halka pink vasto thakbe */
-            white-space: nowrap;
+            transform: translate(-50%, -50%) rotate(-10deg);
             z-index: -1;
+            display: flex;
+            gap: 15px;
             pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .watermark-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 10vw;
+            font-weight: 900;
+            color: rgba(236, 64, 122, 0.06); /* Halka pink watermark */
             text-transform: uppercase;
-            letter-spacing: 1rem;
+            display: inline-block;
+            transition: transform 0.1s ease-out;
         }
 
         .serif { font-family: 'Playfair Display', serif; }
@@ -63,8 +68,7 @@
         .scrolling-content {
             position: relative;
             z-index: 10;
-            /* Scroll korle pichone jeno pink texture thake */
-            background: linear-gradient(180deg, transparent 0%, #FFF0F5 15%, #FFF0F5 100%);
+            background: linear-gradient(180deg, transparent 0%, #FFF0F5 10%, #FFF0F5 100%);
         }
 
         .content-card {
@@ -92,33 +96,36 @@
             border-bottom: 4px solid #ec407a;
             transition: 0.3s ease;
         }
+        .trust-item:hover { transform: scale(1.03); background: #FFF5F8; }
 
-        .contact-box {
-            background: white;
-            border-radius: 2.5rem;
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.05);
-            width: 100%;
-        }
-
-        /* Mobile Browser Fix - Contact text jeno baire na jay */
+        /* Mobile Browser Fix for Contact Section */
         @media (max-width: 768px) {
             .contact-link-text {
-                font-size: 0.85rem !important;
-                word-break: break-all; /* Beshi lomba hole line break korbe */
+                font-size: 0.8rem !important;
+                word-break: break-all;
             }
-            .contact-box {
-                padding: 2.5rem 1.5rem !important;
-            }
-        }
-
-        .social-icon {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            .contact-box { padding: 2rem 1rem !important; }
         }
     </style>
 </head>
 <body>
 
-    <div class="scrolling-watermark serif" id="watermark">SORA COLLECTION</div>
+    <div class="watermark-container" id="watermark">
+        <span class="watermark-letter">S</span>
+        <span class="watermark-letter">O</span>
+        <span class="watermark-letter">R</span>
+        <span class="watermark-letter">A</span>
+        <span class="watermark-letter" style="margin-left: 20px;">C</span>
+        <span class="watermark-letter">O</span>
+        <span class="watermark-letter">L</span>
+        <span class="watermark-letter">L</span>
+        <span class="watermark-letter">E</span>
+        <span class="watermark-letter">C</span>
+        <span class="watermark-letter">T</span>
+        <span class="watermark-letter">I</span>
+        <span class="watermark-letter">O</span>
+        <span class="watermark-letter">N</span>
+    </div>
 
     <div class="sticky-wrapper">
         <header class="hero-container">
@@ -141,11 +148,10 @@
                         <div class="content-card overflow-hidden cursor-pointer" onclick="window.location.href='churi.html'">
                             <div class="relative overflow-hidden aspect-[4/5]">
                                 <img src="https://i.ibb.co.com/sdzCrYry/Polish-20260424-174620990-jpg.jpg" alt="Bangles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                             </div>
                             <div class="p-10 text-center">
                                 <h2 class="text-3xl serif text-gray-800 mb-6">চুড়ি কালেকশন</h2>
-                                <button class="btn-premium text-white px-12 py-4 rounded-full font-bold tracking-widest uppercase text-xs">Explore Bangles</button>
+                                <button class="btn-premium text-white px-12 py-4 rounded-full font-bold uppercase text-xs">Explore Bangles</button>
                             </div>
                         </div>
                     </div>
@@ -154,11 +160,10 @@
                         <div class="content-card overflow-hidden cursor-pointer" onclick="window.location.href='sharee.html'">
                             <div class="relative overflow-hidden aspect-[4/5]">
                                 <img src="https://i.ibb.co.com/Pvdj974W/Gemini-Generated-Image-z2iq5gz2iq5gz2iq.png" alt="Saree" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                             </div>
                             <div class="p-10 text-center">
                                 <h2 class="text-3xl serif text-gray-800 mb-6">শাড়ি কালেকশন</h2>
-                                <button class="btn-premium text-white px-12 py-4 rounded-full font-bold tracking-widest uppercase text-xs">Explore Sarees</button>
+                                <button class="btn-premium text-white px-12 py-4 rounded-full font-bold uppercase text-xs">Explore Sarees</button>
                             </div>
                         </div>
                     </div>
@@ -166,101 +171,84 @@
             </main>
 
             <section class="max-w-6xl mx-auto px-6">
-                <div class="mb-32 rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white ring-1 ring-pink-100" data-aos="zoom-out">
+                <div class="mb-32 rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white" data-aos="zoom-out">
                     <img src="https://i.ibb.co.com/x9b5x1F/Discover-the-finest-collection-of-authentic-sarees-and-handcrafted-Kashmiri-bangles-designed-to-defi.png" alt="SORA Banner" class="w-full">
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-10 mb-32">
-                    <div class="content-card p-12 flex flex-col justify-center border-l-4 border-l-pink-500" data-aos="fade-right">
+                    <div class="content-card p-12 border-l-4 border-l-pink-500" data-aos="fade-right">
                         <h3 class="text-2xl serif text-pink-800 mb-5">আমাদের শাড়ি কালেকশন</h3>
-                        <p class="leading-relaxed text-gray-600 italic">"একটি শাড়ি কেবল ছয় গজ কাপড় নয়, এটি আমাদের সংস্কৃতির পরিচয়। Sora Collection-এ আমরা প্রতিটি শাড়ি বাছাই করি অত্যন্ত যত্ন সহকারে।"</p>
+                        <p class="leading-relaxed text-gray-600 italic">"একটি শাড়ি কেবল কাপড় নয়, এটি আমাদের সংস্কৃতির পরিচয়।"</p>
                     </div>
-
-                    <div class="content-card p-12 flex flex-col justify-center text-right border-r-4 border-r-pink-500" data-aos="fade-left">
+                    <div class="content-card p-12 text-right border-r-4 border-r-pink-500" data-aos="fade-left">
                         <h3 class="text-2xl serif text-pink-800 mb-5">কাশ্মীরি চুড়ি</h3>
-                        <p class="leading-relaxed text-gray-600 italic">"হাতের এক সেট সুন্দর চুড়ি আপনার পুরো সাজকে পূর্ণতা দেয়। আমাদের সিগনেচার কাশ্মীরি চুড়িগুলো মূলত কারিগরদের হাতের জাদুতে তৈরি।"</p>
+                        <p class="leading-relaxed text-gray-600 italic">"আমাদের কাশ্মীরি চুড়িগুলো কারিগরদের হাতের জাদুতে তৈরি।"</p>
+                    </div>
+                </div>
+
+                <div class="content-card p-12 md:p-20 text-center mb-32" data-aos="fade-up">
+                    <h3 class="text-3xl md:text-4xl serif text-pink-900 mb-16 uppercase tracking-widest">কেন আমাদের বিশ্বাস করবেন?</h3>
+                    <div class="grid md:grid-cols-3 gap-10">
+                        <div class="trust-item">
+                            <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">১</div>
+                            <h4 class="font-bold text-gray-800 mb-3">১০০% কোয়ালিটি কন্ট্রোল</h4>
+                            <p class="text-sm text-gray-500">প্রতিটি প্রোডাক্ট ডেলিভারির আগে আমরা ৩ বার নিখুঁতভাবে চেক করি।</p>
+                        </div>
+                        <div class="trust-item">
+                            <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">২</div>
+                            <h4 class="font-bold text-gray-800 mb-3">সরাসরি সংগ্রহ</h4>
+                            <p class="text-sm text-gray-500">সরাসরি কারিগরদের কাছ থেকে সংগ্রহ করি, তাই সাশ্রয়ী মূল্যে সেরা মান।</p>
+                        </div>
+                        <div class="trust-item">
+                            <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">৩</div>
+                            <h4 class="font-bold text-gray-800 mb-3">শতভাগ স্বচ্ছতা</h4>
+                            <p class="text-sm text-gray-500">আপনি ছবিতে যা দেখছেন, ঠিক সেই পণ্যটিই আপনার হাতে পৌঁছাবে ইনশাআল্লাহ।</p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="max-w-4xl mx-auto mb-32" data-aos="fade-up">
-                    <div class="contact-box p-12 md:p-20 text-center">
-                        <h2 class="serif text-4xl md:text-6xl text-gray-900 mb-4 tracking-tighter">Get In Touch</h2>
-                        <p class="text-pink-500 font-semibold mb-12 tracking-widest uppercase text-xs">যেকোনো প্রয়োজনে আমাদের পাশে পাবেন</p>
-                       
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                            <a href="tel:+8809645018666" class="flex flex-col p-8 rounded-3xl bg-pink-50/50 hover:bg-pink-100 transition-all group overflow-hidden">
-                                <span class="text-pink-600 font-bold text-[10px] tracking-widest mb-2">CALL US</span>
+                    <div class="bg-white rounded-[2.5rem] p-8 md:p-20 text-center shadow-lg">
+                        <h2 class="serif text-4xl md:text-6xl text-gray-900 mb-12">Get In Touch</h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <a href="tel:+8809645018666" class="flex flex-col p-8 rounded-3xl bg-pink-50 hover:bg-pink-100 transition-all overflow-hidden">
+                                <span class="text-pink-600 font-bold text-[10px] mb-2 uppercase">Call Us</span>
                                 <span class="text-lg md:text-xl text-gray-800 font-semibold contact-link-text">+8809645018666</span>
                             </a>
-                            <a href="mailto:soracollection.help@gmail.com" class="flex flex-col p-8 rounded-3xl bg-pink-50/50 hover:bg-pink-100 transition-all group overflow-hidden">
-                                <span class="text-pink-600 font-bold text-[10px] tracking-widest mb-2">EMAIL US</span>
-                                <span class="text-sm md:text-base text-gray-800 font-semibold contact-link-text">soracollection.help@gmail.com</span>
+                            <a href="mailto:soracollection.help@gmail.com" class="flex flex-col p-8 rounded-3xl bg-pink-50 hover:bg-pink-100 transition-all overflow-hidden">
+                                <span class="text-pink-600 font-bold text-[10px] mb-2 uppercase">Email Us</span>
+                                <span class="text-xs md:text-sm text-gray-800 font-semibold contact-link-text">soracollection.help@gmail.com</span>
                             </a>
                         </div>
-                       
-                        <a href="https://www.google.com/maps/search/?api=1&query=Rawson+Sarak+Chowrasta+Gazipur+Sadar+1702" target="_blank" class="block p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all">
-                            <span class="text-gray-400 font-bold text-[10px] tracking-widest mb-2 uppercase">Our Location</span>
-                            <p class="text-gray-700 text-sm md:text-base">Rawson Sarak, Chowrasta. Gazipur Sadar, Gazipur 1702</p>
-                        </a>
                     </div>
                 </div>
             </section>
 
-            <section class="py-32 bg-pink-50/30">
-                <div class="max-w-5xl mx-auto text-center px-6" data-aos="fade-up">
-                    <h4 class="serif text-3xl text-gray-800 mb-16 tracking-widest uppercase">Follow Our Journey</h4>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
-                        <a href="https://www.facebook.com/share/1Chw6jaWm3/" target="_blank" class="group flex flex-col items-center">
-                            <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" class="w-14 h-14 mb-4 social-icon shadow-lg rounded-xl" alt="FB">
-                            <span class="text-[11px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">Facebook</span>
-                        </a>
-                        <a href="https://www.instagram.com/soracollection.xyz" target="_blank" class="group flex flex-col items-center">
-                            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-14 h-14 mb-4 social-icon shadow-lg rounded-xl" alt="IG">
-                            <span class="text-[11px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">Instagram</span>
-                        </a>
-                        <a href="https://wa.me/message/P5OZL4WTUGJSL1" target="_blank" class="group flex flex-col items-center">
-                            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-14 h-14 mb-4 social-icon shadow-lg rounded-xl" alt="WA">
-                            <span class="text-[11px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">WhatsApp</span>
-                        </a>
-                        <a href="https://www.tiktok.com/@sora.collection1" target="_blank" class="group flex flex-col items-center">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-14 h-14 mb-4 social-icon shadow-lg rounded-xl" alt="TK">
-                            <span class="text-[11px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">TikTok</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <footer class="py-20 text-center bg-white border-t border-pink-50">
-                <img src="https://i.ibb.co.com/4R143dCb/Gemini-Generated-Image-uph57euph57euph5-removebg-preview.png" class="h-20 mx-auto mb-8 opacity-20 hover:opacity-100 transition-opacity duration-1000">
-                <div class="max-w-2xl mx-auto mb-10 px-6">
-                    <h5 class="serif text-xl text-pink-800 mb-3">About SORA Collection</h5>
-                    <p class="text-sm text-gray-500 leading-relaxed italic">
-                        SORA Collection is a premier fashion destination dedicated to bringing you the finest authentic sarees and handcrafted Kashmiri bangles.
-                    </p>
-                </div>
-                <p class="text-[10px] text-gray-400 uppercase tracking-[0.8em]">© 2026 SORA Collection | Timeless Elegance</p>
+            <footer class="py-10 text-center bg-white border-t border-pink-50">
+                <p class="text-[10px] text-gray-400 uppercase tracking-[0.8em]">© 2026 SORA Collection</p>
             </footer>
         </div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1200, once: true, offset: 150 });
+        AOS.init({ duration: 1200, once: true });
 
         window.addEventListener('scroll', function() {
             const scrollPos = window.pageYOffset;
             const heroImg = document.getElementById('heroImg');
-            const watermark = document.getElementById('watermark');
+            const letters = document.querySelectorAll('.watermark-letter');
            
             if(heroImg) {
                 heroImg.style.transform = `scale(${1 + scrollPos / 5000})`;
                 heroImg.style.opacity = Math.max(0.1, (1 - scrollPos / 1200));
             }
 
-            // Requirement: Parallax Watermark Effect
-            if(watermark) {
-                watermark.style.transform = `translate(-50%, -50%) rotate(-15deg) translateX(${scrollPos / 15}px)`;
-            }
+            // Word Jump Animation on Scroll
+            letters.forEach((letter, index) => {
+                const jump = Math.sin((scrollPos * 0.005) + index) * 25;
+                letter.style.transform = `translateY(${jump}px)`;
+            });
         });
     </script>
 </body>
