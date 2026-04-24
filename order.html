@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SORA | Complete Your Order</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Poppins', 'Hind Siliguri', sans-serif; background-color: #fff5f7; color: #2D3436; }
         .glass-card { background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
         .input-field { width: 100%; padding: 12px; border: 1px solid #f9a8d4; border-radius: 8px; outline: none; margin-top: 5px; }
         .input-field:focus { border-color: #db2777; ring: 2px #fbcfe8; }
-        .btn-submit { background: #db2777; color: white; font-weight: bold; width: 100%; padding: 15px; border-radius: 10px; transition: 0.3s; }
+        .btn-submit { background: #db2777; color: white; font-weight: bold; width: 100%; padding: 15px; border-radius: 10px; transition: 0.3s; cursor: pointer; }
         .btn-submit:hover { background: #be185d; transform: scale(1.02); }
         .copy-icon { cursor: pointer; background: #fdf2f8; padding: 2px 8px; border-radius: 5px; border: 1px solid #f9a8d4; font-size: 12px; }
     </style>
@@ -87,12 +86,12 @@
                         <span class="copy-icon ml-2" onclick="copyNum()">Copy</span>
                     </p>
                     <div class="mt-3">
-                        <label class="text-xs font-bold">যে নাম্বার থেকে টাকা পাঠিয়েছেন (১১ ডিজিট)</label>
+                        <label class="text-xs font-bold">যে নাম্বার থেকে টাকা পাঠিয়েছেন (১১ ডিজিট)</label>
                         <input type="tel" id="sender-num" name="sender_number" class="input-field text-sm" placeholder="01XXXXXXXXX" pattern="[0-9]{11}">
                     </div>
                     <div class="mt-3">
-                        <label class="text-xs font-bold">পেমেন্ট স্ক্রিনশট আপলোড করুন</label>
-                        <input type="file" name="payment_screenshot" class="mt-1 block w-full text-xs" accept="image/*">
+                        <label class="text-xs font-bold">পেমেন্ট স্ক্রিনশট (ঐচ্ছিক)</label>
+                        <input type="file" id="screenshot" class="mt-1 block w-full text-xs" accept="image/*">
                     </div>
                 </div>
             </div>
@@ -219,22 +218,59 @@
             alert("নাম্বারটি কপি হয়েছে!");
         }
 
-        (function(){
-            emailjs.init("YOUR_PUBLIC_KEY"); // আপনার EmailJS Public Key এখানে দিন
-        })();
-
+        // --- Telegram Notification Logic ---
         document.getElementById('order-form').onsubmit = function(event) {
             event.preventDefault();
             document.getElementById('submit-btn').innerText = "অর্ডার হচ্ছে...";
             
-            // EmailJS এর মাধ্যমে ডাটা পাঠানো
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-                .then(function() {
-                    window.location.href = "success.html";
-                }, function(error) {
-                    alert("অর্ডার পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।");
-                    document.getElementById('submit-btn').innerText = "PLACE THE ORDER";
-                });
+            const botToken = "8506295694:AAEL0rw2PDxn5tVOLiiA1t1A6n2qArV6TFk";
+            const chatId = "7239059088";
+
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const address = document.getElementById('cust-address').value;
+            const district = document.getElementById('district').value;
+            const thana = document.getElementById('thana').value;
+            const product = document.getElementById('p-name').innerText;
+            const size = document.getElementById('p-size').innerText;
+            const total = document.getElementById('total-bill').innerText;
+            const method = document.getElementById('pay-method').value;
+            const sender = document.getElementById('sender-num').value;
+
+            const message = `
+🛍️ *নতুন অর্ডার এসেছে!*
+━━━━━━━━━━━━━━
+👤 *কাস্টমার তথ্য:*
+নাম: ${name}
+ফোন: ${phone}
+ঠিকানা: ${address}, ${thana}, ${district}
+
+📦 *প্রোডাক্ট তথ্য:*
+প্রোডাক্ট: ${product}
+সাইজ: ${size}
+
+💰 *পেমেন্ট তথ্য:*
+মেথড: ${method}
+সেন্ডার নাম্বার: ${sender}
+মোট বিল: ${total} TK
+━━━━━━━━━━━━━━`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            })
+            .then(res => {
+                window.location.href = "success.html";
+            })
+            .catch(err => {
+                console.log(err);
+                window.location.href = "success.html";
+            });
         };
     </script>
 </body>
