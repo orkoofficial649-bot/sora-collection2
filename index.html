@@ -11,7 +11,7 @@
         body {
             font-family: 'Poppins', 'Hind Siliguri', sans-serif;
             scroll-behavior: smooth;
-            background: #FFF0F5; /* Requirement: Soft Pink Background */
+            background: #FFF0F5; 
             color: #2D3436;
             overflow-x: hidden;
             position: relative;
@@ -34,7 +34,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 10vw;
             font-weight: 900;
-            color: rgba(236, 64, 122, 0.07); /* Light Pink Watermark */
+            color: rgba(236, 64, 122, 0.07); 
             text-transform: uppercase;
             display: inline-block;
             transition: transform 0.1s ease-out;
@@ -42,7 +42,35 @@
 
         .serif { font-family: 'Playfair Display', serif; }
         .script-font { font-family: 'Great Vibes', cursive; }
-       
+        
+        /* Header Jump Animation */
+        .jump-letter {
+            display: inline-block;
+            animation: letterJump 2s ease-in-out infinite;
+        }
+
+        @keyframes letterJump {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); } /* কতটুকু উপরে লাফাবে */
+        }
+
+        /* প্রতি অক্ষরের জন্য আলাদা Delay যাতে সুন্দর ঢেউয়ের মতো লাগে */
+        .jump-letter:nth-child(1) { animation-delay: 0.1s; }
+        .jump-letter:nth-child(2) { animation-delay: 0.2s; }
+        .jump-letter:nth-child(3) { animation-delay: 0.3s; }
+        .jump-letter:nth-child(4) { animation-delay: 0.4s; }
+        .jump-letter:nth-child(5) { animation-delay: 0.5s; } /* Space */
+        .jump-letter:nth-child(6) { animation-delay: 0.6s; }
+        .jump-letter:nth-child(7) { animation-delay: 0.7s; }
+        .jump-letter:nth-child(8) { animation-delay: 0.8s; }
+        .jump-letter:nth-child(9) { animation-delay: 0.9s; }
+        .jump-letter:nth-child(10) { animation-delay: 1.0s; }
+        .jump-letter:nth-child(11) { animation-delay: 1.1s; }
+        .jump-letter:nth-child(12) { animation-delay: 1.2s; }
+        .jump-letter:nth-child(13) { animation-delay: 1.3s; }
+        .jump-letter:nth-child(14) { animation-delay: 1.4s; }
+        .jump-letter:nth-child(15) { animation-delay: 1.5s; }
+
         .hero-container {
             position: sticky;
             top: 0;
@@ -68,7 +96,6 @@
         .scrolling-content {
             position: relative;
             z-index: 10;
-            /* Gradient transition from hero to pink background */
             background: linear-gradient(180deg, transparent 0%, #FFF0F5 10%, #FFF0F5 100%);
         }
 
@@ -150,7 +177,13 @@
             <img src="https://i.ibb.co.com/HpnBKDVL/Polish-20260424-175635175-jpg.jpg" alt="SORA Header" class="hero-image" id="heroImg">
             <div class="relative z-20 text-center px-6">
                 <h2 class="script-font text-4xl md:text-7xl text-pink-100/90 mb-2 drop-shadow-lg" data-aos="fade-down">Welcome to</h2>
-                <h1 class="serif text-4xl md:text-8xl uppercase font-bold tracking-[0.15em] text-white drop-shadow-2xl" data-aos="zoom-in">SORA COLLECTION</h1>
+                
+                <h1 class="serif text-4xl md:text-8xl uppercase font-bold tracking-[0.15em] text-white drop-shadow-2xl">
+                    <span class="jump-letter">S</span><span class="jump-letter">O</span><span class="jump-letter">R</span><span class="jump-letter">A</span>
+                    <span class="jump-letter">&nbsp;</span>
+                    <span class="jump-letter">C</span><span class="jump-letter">O</span><span class="jump-letter">L</span><span class="jump-letter">L</span><span class="jump-letter">E</span><span class="jump-letter">C</span><span class="jump-letter">T</span><span class="jump-letter">I</span><span class="jump-letter">O</span><span class="jump-letter">N</span>
+                </h1>
+
                 <div class="mt-10" data-aos="fade-up" data-aos-delay="400">
                     <p class="text-[10px] md:text-sm font-medium tracking-[0.6em] uppercase text-white/90 border-y border-white/30 py-5 px-8 inline-block backdrop-blur-sm">
                         Elegance is the only beauty that never fades
@@ -232,7 +265,7 @@
                     <div class="contact-box p-12 md:p-20 text-center">
                         <h2 class="serif text-4xl md:text-6xl text-gray-900 mb-4 tracking-tighter">Get In Touch</h2>
                         <p class="text-pink-500 font-semibold mb-12 tracking-widest uppercase text-xs">যেকোনো প্রয়োজনে আমাদের পাশে পাবেন</p>
-                       
+                        
                         <div class="grid md:grid-cols-2 gap-6 mb-8">
                             <a href="tel:+8809645018666" class="flex flex-col p-8 rounded-3xl bg-pink-50/50 hover:bg-pink-100 transition-all group">
                                 <span class="text-pink-600 font-bold text-[10px] tracking-widest mb-2">CALL US</span>
@@ -243,8 +276,8 @@
                                 <span class="text-sm text-gray-800 font-semibold truncate group-hover:scale-105 transition-transform">soracollection.help@gmail.com</span>
                             </a>
                         </div>
-                       
-                        <a href="https://www.google.com/maps/search/?api=1&query=Rawson+Sarak+Chowrasta+Gazipur+Sadar+1702" target="_blank" class="block p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all">
+                        
+                        <a href="#" class="block p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all">
                             <span class="text-gray-400 font-bold text-[10px] tracking-widest mb-2 uppercase">Our Location</span>
                             <p class="text-gray-700">Rawson Sarak, Chowrasta. Gazipur Sadar, Gazipur 1702</p>
                         </a>
@@ -278,14 +311,12 @@
 
             <footer class="py-20 text-center bg-white border-t border-pink-50">
                 <img src="https://i.ibb.co.com/4R143dCb/Gemini-Generated-Image-uph57euph57euph5-removebg-preview.png" class="h-20 mx-auto mb-8 opacity-20 hover:opacity-100 transition-opacity duration-1000">
-               
                 <div class="max-w-2xl mx-auto mb-10 px-6">
                     <h5 class="serif text-xl text-pink-800 mb-3">About SORA Collection</h5>
                     <p class="text-sm text-gray-500 leading-relaxed italic">
-                        SORA Collection is a premier fashion destination dedicated to bringing you the finest authentic sarees and handcrafted Kashmiri bangles. We believe that elegance is timeless, and our mission is to provide high-quality, ethically sourced traditional wear that empowers your grace every single day.
+                        SORA Collection is a premier fashion destination dedicated to bringing you the finest authentic sarees and handcrafted Kashmiri bangles.
                     </p>
                 </div>
-
                 <p class="text-[10px] text-gray-400 uppercase tracking-[0.8em]">© 2026 SORA Collection | Timeless Elegance</p>
             </footer>
         </div>
@@ -303,15 +334,14 @@
             const scrollPos = window.pageYOffset;
             const heroImg = document.getElementById('heroImg');
             const letters = document.querySelectorAll('.watermark-letter');
-           
+            
             if(heroImg) {
                 heroImg.style.transform = `scale(${1 + scrollPos / 5000})`;
                 heroImg.style.opacity = Math.max(0.1, (1 - scrollPos / 1200));
             }
 
-            // Word Animation: Jumping effect on scroll
             letters.forEach((letter, index) => {
-                const jump = Math.sin((scrollPos * 0.005) + index) * 25; // Change 25 for higher/lower jump
+                const jump = Math.sin((scrollPos * 0.005) + index) * 25; 
                 letter.style.transform = `translateY(${jump}px)`;
             });
         });
