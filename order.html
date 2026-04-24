@@ -49,7 +49,7 @@
             <div class="grid md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-sm font-semibold mb-2">জেলা *</label>
-                    <input list="districts" id="district" required placeholder="জেলা টাইপ করুন বা সিলেক্ট করুন" oninput="updateThana()">
+                    <input list="districts" id="district" required placeholder="জেলা টাইপ বা সিলেক্ট করুন" oninput="updateThana()">
                     <datalist id="districts"></datalist>
                 </div>
                 <div>
@@ -98,14 +98,14 @@
                 </div>
 
                 <div id="paymentDetails" class="hidden bg-pink-50 p-4 rounded-xl text-center border border-pink-100">
-                    <p class="text-sm font-medium">নিচের নাম্বারে <span class="font-bold text-pink-600" id="chargeAmount"></span> টাকা পাঠিয়ে 'Send Money' করুন:</p>
+                    <p class="text-sm font-medium">নিচের নাম্বারে <span class="font-bold text-pink-600" id="chargeAmount"></span> টাকা পাঠিয়ে 'Send Money' করুন:</p>
                     <p class="text-2xl font-bold text-gray-800 my-2 tracking-wider" id="targetNumber">00000000000</p>
-                    <p class="text-[10px] text-pink-500 font-semibold">নাম্বারের ওপর ট্যাপ করে কপি করুন</p>
+                    <p class="text-[10px] text-pink-500 font-semibold cursor-pointer">নাম্বারের ওপর ক্লিক করে কপি করুন</p>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-semibold mb-2">যে নম্বর থেকে টাকা পাঠিয়েছেন *</label>
+                        <label class="block text-sm font-semibold mb-2">যে নম্বর থেকে টাকা পাঠিয়েছেন *</label>
                         <input type="tel" id="senderNum" placeholder="০১XXXXXXXXX" pattern="[0-9]{11}" required>
                     </div>
                     <div>
@@ -120,47 +120,75 @@
     </div>
 
     <script>
+        // Full 64 District & Upazila Data
         const locationData = {
-            "Dhaka": ["Kotwali", "Mohammadpur", "Lalbagh", "Sutrapur", "Motijheel", "Demra", "Sabujbagh", "Mirpur", "Gulshan", "Uttara", "Pallabi", "Cantonment", "Dhanmondi", "Tejgaon", "Ramna", "Keraniganj", "Dohar", "Nawabganj", "Savar", "Dhamrai"],
-            "Narsingdi": ["Sadar", "Monohardi", "Shibpur", "Palash", "Belabo", "Raipura"],
-            "Narayanganj": ["Sadar", "Bandar", "Sonargaon", "Araihazar", "Rupganj"],
-            "Munshiganj": ["Sadar", "Tongibari", "Louhajang", "Sreenagar", "Sirajdikhan", "Gazaria"],
-            "Gazipur": ["Sadar", "Tongi", "Kaliganj", "Kaliakair", "Kapasia", "Sreepur"],
-            "Manikganj": ["Sadar", "Singair", "Daulatpur", "Harirampur", "Ghior", "Shibalaya", "Saturia"],
-            "Faridpur": ["Sadar", "Boalmari", "Sadarpur", "Charbhadrasan", "Bhanga", "Nagarkanda", "Madhukhali", "Alfadanga", "Saltha"],
-            "Rajbari": ["Sadar", "Pangsha", "Goalanda", "Kalukhali", "Baliakandi"],
-            "Gopalganj": ["Sadar", "Kashiani", "Tungipara", "Muksudpur", "Kotalipara"],
+            "Dhaka": ["Aricha", "Dhamrai", "Dohar", "Gulshan", "Demra", "Keraniganj", "Kotwali", "Lalbagh", "Mirpur", "Mohammadpur", "Motijheel", "Nawabganj", "Pallabi", "Ramna", "Sabujbagh", "Savar", "Sutrapur", "Tejgaon", "Uttara"],
+            "Gazipur": ["Sadar", "Kaliakair", "Kaliganj", "Kapasia", "Sreepur"],
+            "Narayanganj": ["Sadar", "Araihazar", "Bandar", "Rupganj", "Sonargaon"],
+            "Narsingdi": ["Sadar", "Belabo", "Monohardi", "Palash", "Raipura", "Shibpur"],
+            "Munshiganj": ["Sadar", "Gajaria", "Lauhajang", "Sirajdikhan", "Sreenagar", "Tongibari"],
+            "Manikganj": ["Sadar", "Daulatpur", "Ghior", "Harirampur", "Saturia", "Shivalaya", "Singair"],
+            "Tangail": ["Sadar", "Basail", "Bhuapur", "Delduar", "Ghatail", "Gopalpur", "Kalihati", "Madhupur", "Mirzapur", "Nagarpur", "Sakhipur", "Dhanbari"],
+            "Kishoreganj": ["Sadar", "Austagram", "Bajitpur", "Bhairab", "Hossainpur", "Itna", "Karimganj", "Katiadi", "Kuliarchar", "Mithamain", "Nikli", "Pakundia", "Tarail"],
+            "Faridpur": ["Sadar", "Alfadanga", "Bhanga", "Boalmari", "Charbhadrasan", "Madhukhali", "Nagarkanda", "Sadarpur", "Saltha"],
+            "Rajbari": ["Sadar", "Baliakandi", "Goalandaghat", "Pangsha", "Kalukhali"],
+            "Gopalganj": ["Sadar", "Kashiani", "Kotalipara", "Muksudpur", "Tungipara"],
             "Madaripur": ["Sadar", "Kalkini", "Rajoir", "Shibchar"],
-            "Shariatpur": ["Sadar", "Damudya", "Naria", "Jazira", "Bhedarganj", "Gosairhat"],
-            "Barishal": ["Sadar", "Muladi", "Gournadi", "Agailjhara", "Hijla", "Uzirpur", "Mehendiganj", "Babuganj", "Bakerganj", "Banaripara"],
-            "Barguna": ["Sadar", "Amtali", "Betagi", "Taltoli", "Patharghata", "Bamna"],
-            "Bhola": ["Sadar", "Daulatkhan", "Lalmohan", "Monpura", "Char Fasson", "Tajumuddin", "Borhanuddin"],
-            "Jhalokathi": ["Sadar", "Nalchity", "Rajapur", "Kathalia"],
-            "Patuakhali": ["Sadar", "Galachipa", "Kalapara", "Dashmina", "Bauphal", "Rangabali", "Dumki", "Mirzaganj"],
-            "Pirojpur": ["Sadar", "Mathbaria", "Nazirpur", "Nesarabad", "Zianagar", "Kaukhali", "Bhandaria"],
-            "Khulna": ["Sadar", "Sonadanga", "Daulatpur", "Phultala", "Dumuria", "Terokhada", "Dighalia", "Rupsha", "Batiaghata", "Dakop", "Koyra"],
-            "Bagerhat": ["Sadar", "Kachua", "Rampal", "Sarankhola", "Morrelganj", "Mollahat", "Chitalmari", "Fakirhat", "Mongla"],
-            "Satkhira": ["Sadar", "Shyamnagar", "Assasuni", "Tala", "Kaliganj", "Kalaroa", "Debhata"],
-            "Jessore": ["Sadar", "Keshabpur", "Jhikargacha", "Monirampur", "Bagherpara", "Chaugachha", "Sharsha", "Abhaynagar"],
-            "Narail": ["Sadar", "Kalia", "Lohagara"],
-            "Magura": ["Sadar", "Sreepur", "Salikha", "Mohammadpur"],
-            "Jhenaidah": ["Sadar", "Kaliganj", "Kotchandpur", "Harinakunda", "Shailkupa", "Maheshpur"],
+            "Shariatpur": ["Sadar", "Bhedarganj", "Damudya", "Gosairhat", "Jajira", "Naria"],
+            "Chattogram": ["Sadar", "Anwara", "Banshkhali", "Boalkhali", "Chandanaish", "Fatickchhari", "Hathazari", "Lohagara", "Mirsharai", "Patiya", "Rangunia", "Rauzan", "Sandwip", "Satkania", "Sitakunda"],
+            "Coxsbazar": ["Sadar", "Chakaria", "Kutubdia", "Maheshkhali", "Ramu", "Teknaf", "Ukhia", "Pekua"],
+            "Cumilla": ["Sadar", "Barura", "Brahmanpara", "Burichong", "Chandina", "Chauddagram", "Daudkandi", "Debidwar", "Homna", "Laksam", "Monohargonj", "Meghna", "Muradnagar", "Nangalkot", "Titas"],
+            "Feni": ["Sadar", "Chhagalnaiya", "Daganbhuiyan", "Parshuram", "Sonagazi", "Fulgazi"],
+            "Noakhali": ["Sadar", "Begumganj", "Chatkhil", "Companyganj", "Hatiya", "Senbagh", "Subarnachar", "Sonaimuri", "Kabirhat"],
+            "Lakshmipur": ["Sadar", "Kamalnagar", "Raipur", "Ramganj", "Ramgati"],
+            "Brahmanbaria": ["Sadar", "Akhaura", "Bancharampur", "Bijoynagar", "Kasba", "Nabinagar", "Nasirnagar", "Sarail", "Ashuganj"],
+            "Chandpur": ["Sadar", "Faridganj", "Haimchar", "Haziganj", "Kachua", "Matlab North", "Matlab South", "Shahrasti"],
+            "Rangamati": ["Sadar", "Baghaichhari", "Barkal", "Kawkhali", "Belaichhari", "Kaptai", "Juraichhari", "Langadu", "Naniarchar", "Rajasthali"],
+            "Khagrachhari": ["Sadar", "Dighinala", "Lakshmichhari", "Mahalchhari", "Manikchhari", "Matiranga", "Panchhari", "Ramgarh"],
+            "Bandarban": ["Sadar", "Ali Kadam", "Lama", "Naikhongchhari", "Rowangchhari", "Ruma", "Thanchi"],
+            "Sylhet": ["Sadar", "Balaganj", "Beanibazar", "Bishwanath", "Fenchuganj", "Golapganj", "Gowainghat", "Jaintiapur", "Kanaighat", "Zakiganj", "Dakshin Surma", "Companiganj"],
+            "Sunamganj": ["Sadar", "Bishwambharpur", "Chhatak", "Derai", "Dharampasha", "Dowarabazar", "Jagannathpur", "Jamalganj", "Sulla", "Tahirpur", "Dakshin Sunamganj"],
+            "Moulvibazar": ["Sadar", "Barlekha", "Juri", "Kamalganj", "Kulaura", "Rajnagar", "Sreemangal"],
+            "Habiganj": ["Sadar", "Ajmiriganj", "Bahubal", "Baniyachong", "Chunarughat", "Lakhai", "Madhabpur", "Nabiganj"],
+            "Rajshahi": ["Sadar", "Bagha", "Bagmara", "Charghat", "Durgapur", "Godagari", "Mohanpur", "Paba", "Puthia", "Tanore"],
+            "Bogura": ["Sadar", "Adamdighi", "Dhunat", "Dhupchanchia", "Gabtali", "Kahaloo", "Nandigram", "Sariakandi", "Sherpur", "Shibganj", "Sonatala"],
+            "Pabna": ["Sadar", "Atgharia", "Bera", "Bhangura", "Chatmohar", "Faridpur", "Ishwardi", "Santhia", "Sujanagar"],
+            "Naogaon": ["Sadar", "Atrai", "Badalgachhi", "Dhamoirhat", "Manda", "Mahadevpur", "Niamatpur", "Patnitala", "Porsha", "Raninagar", "Sapahar"],
+            "Joypurhat": ["Sadar", "Akkelpur", "Kalai", "Khetlal", "Panchbibi"],
+            "Chapai Nawabganj": ["Sadar", "Bholahat", "Gomastapur", "Nachole", "Shibganj"],
+            "Natore": ["Sadar", "Bagatipara", "Baraigram", "Gurudaspur", "Lalpur", "Singra", "Naldanga"],
+            "Sirajganj": ["Sadar", "Belkuchi", "Chauhali", "Kamarkhanda", "Kazipur", "Raiganj", "Shahjadpur", "Tarash", "Ullapara"],
+            "Rangpur": ["Sadar", "Badarganj", "Gangachara", "Kaunia", "Mithapukur", "Pirgachha", "Pirganj", "Taraganj"],
+            "Dinajpur": ["Sadar", "Birampur", "Birganj", "Biral", "Bochaganj", "Chirirbandar", "Phulbari", "Ghoraghat", "Hakimpur", "Kaharole", "Khansama", "Nawabganj", "Parbatipur"],
+            "Kurigram": ["Sadar", "Bhurungamari", "Chilmari", "Phulbari", "Nageshwari", "Rajarhat", "Rajibpur", "Roumari", "Ulipur"],
+            "Gaibandha": ["Sadar", "Phulchhari", "Gobindaganj", "Palashbari", "Sadullapur", "Saghata", "Sundarganj"],
+            "Lalmonirhat": ["Sadar", "Aditmari", "Hatibandha", "Kaliganj", "Patgram"],
+            "Nilphamari": ["Sadar", "Dimla", "Domar", "Jaldhaka", "Kishoreganj", "Saidpur"],
+            "Panchagarh": ["Sadar", "Atwari", "Boda", "Debiganj", "Tetulia"],
+            "Thakurgaon": ["Sadar", "Baliadangi", "Haripur", "Pirganj", "Ranisankail"],
+            "Khulna": ["Sadar", "Batiaghata", "Dacope", "Dumuria", "Dighalia", "Koyra", "Paikgachha", "Phultala", "Rupsha"],
+            "Jashore": ["Sadar", "Abhaynagar", "Bagherpara", "Chaugachha", "Jhikargachha", "Keshabpur", "Manirampur", "Sharsha"],
+            "Satkhira": ["Sadar", "Assasuni", "Debhata", "Kalaroa", "Kaliganj", "Shyamnagar", "Tala"],
+            "Bagerhat": ["Sadar", "Chitalmari", "Fakirhat", "Kachua", "Mollahat", "Mongla", "Morrelganj", "Rampal", "Sarankhola"],
+            "Jhenaidah": ["Sadar", "Harinakunda", "Kaliganj", "Kotchandpur", "Maheshpur", "Shailkupa"],
+            "Kushtia": ["Sadar", "Bheramara", "Daulatpur", "Khoksa", "Kumarkhali", "Mirpur"],
+            "Magura": ["Sadar", "Mohammadpur", "Shalikha", "Sreepur"],
             "Meherpur": ["Sadar", "Gangni", "Mujibnagar"],
-            "Chuadanga": ["Sadar", "Jibannagar", "Damurhuda", "Alamdanga"],
-            "Kushtia": ["Sadar", "Kumarkhali", "Daulatpur", "Bheramara", "Khoksa", "Mirpur"],
-            "Sylhet": ["Sadar", "Gopalganj", "Beanibazar", "Jaintiapur", "Companiganj", "Zakiganj", "Dakshin Surma", "Fenchuganj", "Bishwanath", "Balaganj", "Gowainghat", "Kanaighat"],
-            "Sunamganj": ["Sadar", "Jamalganj", "Jagannathpur", "Sulla", "Dharampasha", "Bishwambharpur", "South Sunamganj", "Chhatak", "Dowarabazar", "Derai", "Tahirpur"],
-            "Moulvibazar": ["Sadar", "Rajnagar", "Kulaura", "Juri", "Barlekha", "Kamalaj", "Sreemangal"],
-            "Habiganj": ["Sadar", "Bahubal", "Lakhai", "Nabiganj", "Chunarughat", "Madhabpur", "Baniyachong", "Ajmiriganj"],
-            "Mymensingh": ["Sadar", "Muktagacha", "Phulbaria", "Bhaluka", "Trishal", "Gafargaon", "Nandail", "Ishwarganj", "Dhobaura", "Gouripur", "Phulpur", "Haluaghat", "Tarakanda"],
-            "Jamalpur": ["Sadar", "Islampur", "Dewanganj", "Sarishabari", "Madarganj", "Bokshiganj", "Melandaha"],
-            "Sherpur": ["Sadar", "Nakla", "Nalitabari", "Jhenaigati", "Sreebardi"],
-            "Netrokona": ["Sadar", "Atpara", "Barhatta", "Mohanganj", "Kalmakanda", "Durgapur", "Madan", "Kendua", "Purbadhala", "Khaliajuri"],
-            "Tangail": ["Sadar", "Delduar", "Mirzapur", "Bhuapur", "Ghatail", "Basail", "Nagarpur", "Kalihati", "Sakhipur", "Gopalpur", "Dhanbari", "Madhupur"],
-            "Kishoreganj": ["Sadar", "Hossainpur", "Karimganj", "Pakundia", "Nikli", "Bajitpur", "Kuliarchar", "Bhairab", "Mithamain", "Itna", "Katiadi", "Austagram", "Tarail"]
+            "Narail": ["Sadar", "Kalia", "Lohagara"],
+            "Chuadanga": ["Sadar", "Alamdanga", "Damurhuda", "Jibannagar"],
+            "Barishal": ["Sadar", "Agailjhara", "Babuganj", "Bakerganj", "Banaripara", "Gaurnadi", "Hijla", "Mehendiganj", "Muladi", "Wazirpur"],
+            "Bhola": ["Sadar", "Borhanuddin", "Char Fasson", "Daulatkhan", "Lalmohan", "Manpura", "Tazumuddin"],
+            "Patuakhali": ["Sadar", "Bauphal", "Dashmina", "Galachipa", "Kalapara", "Mirzaganj", "Rangabali", "Dumki"],
+            "Pirojpur": ["Sadar", "Bhandaria", "Kawkhali", "Mathbaria", "Nazirpur", "Nesarabad", "Zianagar"],
+            "Barguna": ["Sadar", "Amtali", "Bamna", "Betagi", "Patharghata", "Taltali"],
+            "Jhalokathi": ["Sadar", "Kathalia", "Nalchity", "Rajapur"],
+            "Mymensingh": ["Sadar", "Bhaluka", "Dhobaura", "Fulbaria", "Gaffargaon", "Gauripur", "Haluaghat", "Ishwarganj", "Muktagachha", "Nandail", "Phulpur", "Trishal", "Tara Khanda"],
+            "Jamalpur": ["Sadar", "Bakshiganj", "Dewanganj", "Islampur", "Madarganj", "Melandaha", "Sarishabari"],
+            "Netrokona": ["Sadar", "Atpara", "Barhatta", "Durgapur", "Khaliajuri", "Kalmakanda", "Kendua", "Madan", "Mohanganj", "Purbadhala"],
+            "Sherpur": ["Sadar", "Jhenaigati", "Nakla", "Nalitabari", "Sreebardi"]
         };
 
-        // Populate Districts
+        // Populate Districts in Datalist
         const distList = document.getElementById('districts');
         Object.keys(locationData).sort().forEach(d => {
             let opt = document.createElement('option');
@@ -168,34 +196,36 @@
             distList.appendChild(opt);
         });
 
-        // Get Product Info from localStorage
-        const savedName = localStorage.getItem('selectedProductName') || "প্রোডাক্ট সিলেক্ট করা হয়নি";
+        // Get Product Info
+        const savedName = localStorage.getItem('selectedProductName') || "প্রোডাক্ট সিলেক্ট করা হয়নি";
         const savedPrice = parseInt(localStorage.getItem('selectedProductPrice')) || 0;
         document.getElementById('displayProductName').innerText = savedName;
         document.getElementById('displayPrice').innerText = savedPrice;
         document.getElementById('displayTotal').innerText = savedPrice;
 
         function updateThana() {
-            const districtInput = document.getElementById('district').value;
+            const districtInput = document.getElementById('district').value.trim();
             const thanaSelect = document.getElementById('thana');
-           
-            if (locationData[districtInput]) {
+            
+            // Check for match (case insensitive)
+            const matchedDistrict = Object.keys(locationData).find(d => d.toLowerCase() === districtInput.toLowerCase());
+
+            if (matchedDistrict) {
                 thanaSelect.innerHTML = '<option value="">সিলেক্ট করুন</option>';
-                locationData[districtInput].sort().forEach(t => {
+                locationData[matchedDistrict].sort().forEach(t => {
                     let opt = document.createElement('option');
                     opt.value = t; opt.innerText = t;
                     thanaSelect.appendChild(opt);
                 });
-                calculateTotal();
+                calculateTotal(matchedDistrict);
             } else {
                 thanaSelect.innerHTML = '<option value="">আগে জেলা বেছে নিন</option>';
                 resetCharges();
             }
         }
 
-        function calculateTotal() {
-            const district = document.getElementById('district').value;
-            let delivery = district.trim().toLowerCase() === "dhaka" ? 100 : 130;
+        function calculateTotal(district) {
+            let delivery = district.toLowerCase() === "dhaka" ? 100 : 130;
            
             document.getElementById('displayDelivery').innerText = delivery;
             document.getElementById('displayTotal').innerText = savedPrice + delivery;
@@ -220,22 +250,23 @@
             }
         }
 
-        // Copy number feature
         document.getElementById('targetNumber').addEventListener('click', function() {
             const num = this.innerText;
             navigator.clipboard.writeText(num).then(() => {
-                alert("নম্বরটি কপি করা হয়েছে: " + num);
+                alert("নম্বরটি কপি করা হয়েছে: " + num);
             });
         });
 
         // Form Submission
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
-           
             const btn = document.getElementById('submitBtn');
-            const districtValue = document.getElementById('district').value;
+            const districtInput = document.getElementById('district').value;
 
-            if (!locationData[districtValue]) {
+            // Strict District Validation
+            const isValidDistrict = Object.keys(locationData).some(d => d.toLowerCase() === districtInput.toLowerCase());
+            
+            if (!isValidDistrict) {
                 alert("অনুগ্রহ করে লিস্ট থেকে সঠিক জেলা সিলেক্ট করুন।");
                 return;
             }
@@ -247,7 +278,7 @@
             formData.append('name', document.getElementById('name').value);
             formData.append('phone', document.getElementById('phone').value);
             formData.append('address', document.getElementById('address').value);
-            formData.append('district', districtValue);
+            formData.append('district', districtInput);
             formData.append('thana', document.getElementById('thana').value);
             formData.append('productName', savedName);
             formData.append('totalAmount', document.getElementById('displayTotal').innerText);
@@ -273,7 +304,7 @@
             })
             .catch(err => {
                 console.error("Order Submit Error:", err);
-                alert("দুঃখিত, সার্ভার সমস্যা হচ্ছে! দয়া করে কিছুক্ষণ পর চেষ্টা করুন অথবা সরাসরি আমাদের কল করুন।");
+                alert("দুঃখিত, সার্ভার সমস্যা হচ্ছে! সরাসরি আমাদের কল করুন।");
                 btn.disabled = false;
                 btn.innerText = "অর্ডার কনফার্ম করুন";
             });
