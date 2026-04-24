@@ -3,247 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORA Collection | Checkout</title>
+    <title>SORA | Complete Your Order</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', 'Hind Siliguri', sans-serif; background: #fff5f8; color: #4a148c; }
-        .form-card { background: white; border-radius: 2rem; box-shadow: 0 20px 40px rgba(236, 64, 122, 0.1); }
-        input, select { border: 1px solid #f8bbd0 !important; border-radius: 0.8rem !important; padding: 12px !important; width: 100%; outline: none; transition: 0.3s; background: #fff; }
-        input:focus, select:focus { border-color: #ec407a !important; box-shadow: 0 0 0 3px rgba(236, 64, 122, 0.1); }
-        .btn-submit { background: linear-gradient(45deg, #ec407a, #880e4f); color: white; font-weight: bold; padding: 16px; border-radius: 1rem; width: 100%; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(236, 64, 122, 0.4); }
-        .btn-submit:disabled { background: #d1d1d1; cursor: not-allowed; transform: none; box-shadow: none; }
-        .brand-logo { width: 120px; height: auto; margin-bottom: 5px; }
-        .product-img-preview { width: 70px; height: 70px; object-fit: cover; border-radius: 10px; border: 1px solid #eee; }
+        body {
+            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+            background-color: #fff0f5;
+            color: #2D3436;
+        }
+        .order-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #fce4ec;
+        }
     </style>
 </head>
-<body class="py-8 px-4">
+<body class="py-10 px-4">
 
-    <div class="max-w-2xl mx-auto form-card p-6 md:p-10">
-        <div class="flex flex-col items-center mb-8 text-center">
-            <img src="https://i.ibb.co.com/jv80152T/Gemini-Generated-Image-uph57euph57euph5-removebg-preview.png" alt="SORA Logo" class="brand-logo">
-            <h1 class="text-3xl font-bold text-pink-700 tracking-tight">SORA COLLECTION</h1>
-            <div class="h-1 w-20 bg-pink-500 rounded-full mt-3"></div>
+    <div class="max-w-md mx-auto order-card p-6">
+        <div class="flex items-center gap-2 mb-6">
+            <span class="text-2xl">📦</span>
+            <h2 class="text-xl font-bold text-pink-800">অর্ডারের বিবরণ:</h2>
         </div>
 
-        <form id="orderForm" class="space-y-5">
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-semibold mb-2">আপনার নাম *</label>
-                    <input type="text" id="name" required placeholder="পুরো নাম লিখুন">
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-2">মোবাইল নম্বর *</label>
-                    <input type="tel" id="phone" required placeholder="০১XXXXXXXXX" pattern="[0-9]{11}">
-                </div>
+        <div class="space-y-4">
+            <div class="price-row">
+                <span class="text-gray-600 font-semibold">প্রোডাক্ট:</span>
+                <span id="display-name" class="font-bold text-pink-700 text-right max-w-[200px]">লোড হচ্ছে...</span>
             </div>
 
-            <div>
-                <label class="block text-sm font-semibold mb-2">বিস্তারিত ঠিকানা *</label>
-                <input type="text" id="address" required placeholder="বাসা নং, রোড বা গ্রাম">
+            <div class="price-row">
+                <span class="text-gray-600 font-semibold">সাইজ:</span>
+                <span id="display-size" class="font-bold">--</span>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-semibold mb-2">জেলা *</label>
-                    <input list="districts" id="district" required placeholder="জেলা লিখুন" oninput="updateThana()">
-                    <datalist id="districts"></datalist>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-2">থানা নির্বাচন করুন *</label>
-                    <select id="thana" required>
-                        <option value="">আগে জেলা বেছে নিন</option>
-                    </select>
-                </div>
+            <div class="price-row">
+                <span class="text-gray-600 font-semibold">মূল্য:</span>
+                <span id="display-price" class="font-bold">0 TK</span>
             </div>
 
-            <div class="bg-pink-50 p-5 rounded-2xl border border-pink-100">
-                <h3 class="font-bold text-pink-800 mb-3 flex items-center gap-2">📦 অর্ডারের বিবরণ:</h3>
-                <div class="flex items-center gap-4 bg-white p-3 rounded-xl mb-3 shadow-sm">
-                    <img id="displayProductImg" src="" class="product-img-preview hidden" alt="Product">
-                    <span id="displayProductName" class="font-bold text-gray-700">প্রোডাক্ট লোড হচ্ছে...</span>
-                </div>
-                <div class="space-y-2 text-sm">
-                    <div class="flex justify-between">
-                        <span>পণ্যের মূল্য:</span>
-                        <span class="font-bold"><span id="displayPrice">0</span> TK</span>
-                    </div>
-                    <div class="flex justify-between text-red-500">
-                        <span>ডেলিভারি চার্জ:</span>
-                        <span class="font-bold">+ <span id="displayDelivery">0</span> TK</span>
-                    </div>
-                    <div class="flex justify-between border-t pt-2 text-lg font-bold text-pink-700">
-                        <span>সর্বমোট:</span>
-                        <span><span id="displayTotal">0</span> TK</span>
-                    </div>
-                </div>
+            <div class="price-row text-red-500">
+                <span class="font-semibold">ডেলিভারি চার্জ:</span>
+                <span class="font-bold">+ 130 TK</span>
             </div>
 
-            <div class="border border-pink-200 p-5 rounded-2xl space-y-4">
-                <label class="block text-sm font-semibold">পেমেন্ট মেথড (ডেলিভারি চার্জ অগ্রিম) *</label>
-                <select id="payMethod" onchange="updatePaymentInfo()" required>
-                    <option value="">সিলেক্ট করুন</option>
-                    <option value="bkash">bKash (Personal)</option>
-                    <option value="nagad">Nagad (Personal)</option>
-                </select>
-
-                <div id="paymentDetails" class="hidden bg-pink-100 p-4 rounded-xl text-center">
-                    <p class="text-sm">নিচের নাম্বারে <span class="font-bold text-pink-600" id="chargeAmount"></span> টাকা Send Money করুন:</p>
-                    <p class="text-xl font-bold my-1" id="targetNumber">00000000000</p>
-                    <p class="text-[10px] text-gray-500 italic">(ক্লিক করে কপি করুন)</p>
-                </div>
-
-                <input type="tel" id="senderNum" placeholder="যে নম্বর থেকে টাকা পাঠিয়েছেন" pattern="[0-9]{11}" required>
+            <div class="flex justify-between items-center pt-4 mt-2 border-t-2 border-pink-200">
+                <span class="text-lg font-bold text-gray-800">সর্বমোট বিল:</span>
+                <span id="display-total" class="text-xl font-extrabold text-pink-700">130 TK</span>
             </div>
+        </div>
 
-            <button type="submit" id="submitBtn" class="btn-submit">অর্ডার কনফার্ম করুন</button>
-        </form>
+        <input type="hidden" id="input-product" name="product">
+        <input type="hidden" id="input-size" name="size">
+        <input type="hidden" id="input-total" name="total">
     </div>
 
     <script>
-        // আপনার দেওয়া জেলা ও থানার ডাটা
-        const locationData = {
-            "Dhaka": ["Kotwali", "Mohammadpur", "Lalbagh", "Sutrapur", "Motijheel", "Demra", "Sabujbagh", "Mirpur", "Gulshan", "Uttara", "Pallabi", "Cantonment", "Dhanmondi", "Tejgaon", "Ramna", "Keraniganj", "Dohar", "Nawabganj", "Savar", "Dhamrai"],
-            "Narsingdi": ["Sadar", "Monohardi", "Shibpur", "Palash", "Belabo", "Raipura"],
-            "Narayanganj": ["Sadar", "Bandar", "Sonargaon", "Araihazar", "Rupganj"],
-            "Munshiganj": ["Sadar", "Tongibari", "Louhajang", "Sreenagar", "Sirajdikhan", "Gazaria"],
-            "Gazipur": ["Sadar", "Tongi", "Kaliganj", "Kaliakair", "Kapasia", "Sreepur"],
-            "Manikganj": ["Sadar", "Singair", "Daulatpur", "Harirampur", "Ghior", "Shibalaya", "Saturia"],
-            "Faridpur": ["Sadar", "Boalmari", "Sadarpur", "Charbhadrasan", "Bhanga", "Nagarkanda", "Madhukhali", "Alfadanga", "Saltha"],
-            "Rajbari": ["Sadar", "Pangsha", "Goalanda", "Kalukhali", "Baliakandi"],
-            "Gopalganj": ["Sadar", "Kashiani", "Tungipara", "Muksudpur", "Kotalipara"],
-            "Madaripur": ["Sadar", "Kalkini", "Rajoir", "Shibchar"],
-            "Shariatpur": ["Sadar", "Damudya", "Naria", "Jazira", "Bhedarganj", "Gosairhat"],
-            "Barishal": ["Sadar", "Muladi", "Gournadi", "Agailjhara", "Hijla", "Uzirpur", "Mehendiganj", "Babuganj", "Bakerganj", "Banaripara"],
-            "Barguna": ["Sadar", "Amtali", "Betagi", "Taltoli", "Patharghata", "Bamna"],
-            "Bhola": ["Sadar", "Daulatkhan", "Lalmohan", "Monpura", "Char Fasson", "Tajumuddin", "Borhanuddin"],
-            "Jhalokathi": ["Sadar", "Nalchity", "Rajapur", "Kathalia"],
-            "Patuakhali": ["Sadar", "Galachipa", "Kalapara", "Dashmina", "Bauphal", "Rangabali", "Dumki", "Mirzaganj"],
-            "Pirojpur": ["Sadar", "Mathbaria", "Nazirpur", "Nesarabad", "Zianagar", "Kaukhali", "Bhandaria"],
-            "Khulna": ["Sadar", "Sonadanga", "Daulatpur", "Phultala", "Dumuria", "Terokhada", "Dighalia", "Rupsha", "Batiaghata", "Dakop", "Koyra"],
-            "Bagerhat": ["Sadar", "Kachua", "Rampal", "Sarankhola", "Morrelganj", "Mollahat", "Chitalmari", "Fakirhat", "Mongla"],
-            "Satkhira": ["Sadar", "Shyamnagar", "Assasuni", "Tala", "Kaliganj", "Kalaroa", "Debhata"],
-            "Jessore": ["Sadar", "Keshabpur", "Jhikargacha", "Monirampur", "Bagherpara", "Chaugachha", "Sharsha", "Abhaynagar"],
-            "Narail": ["Sadar", "Kalia", "Lohagara"],
-            "Magura": ["Sadar", "Sreepur", "Salikha", "Mohammadpur"],
-            "Jhenaidah": ["Sadar", "Kaliganj", "Kotchandpur", "Harinakunda", "Shailkupa", "Maheshpur"],
-            "Meherpur": ["Sadar", "Gangni", "Mujibnagar"],
-            "Chuadanga": ["Sadar", "Jibannagar", "Damurhuda", "Alamdanga"],
-            "Kushtia": ["Sadar", "Kumarkhali", "Daulatpur", "Bheramara", "Khoksa", "Mirpur"],
-            "Sylhet": ["Sadar", "Gopalganj", "Beanibazar", "Jaintiapur", "Companiganj", "Zakiganj", "Dakshin Surma", "Fenchuganj", "Bishwanath", "Balaganj", "Gowainghat", "Kanaighat"],
-            "Sunamganj": ["Sadar", "Jamalganj", "Jagannathpur", "Sulla", "Dharampasha", "Bishwambharpur", "South Sunamganj", "Chhatak", "Dowarabazar", "Derai", "Tahirpur"],
-            "Moulvibazar": ["Sadar", "Rajnagar", "Kulaura", "Juri", "Barlekha", "Kamalganj", "Sreemangal"],
-            "Habiganj": ["Sadar", "Bahubal", "Lakhai", "Nabiganj", "Chunarughat", "Madhabpur", "Baniyachong", "Ajmiriganj"],
-            "Mymensingh": ["Sadar", "Muktagacha", "Phulbaria", "Bhaluka", "Trishal", "Gafargaon", "Nandail", "Ishwarganj", "Dhobaura", "Gouripur", "Phulpur", "Haluaghat", "Tarakanda"],
-            "Jamalpur": ["Sadar", "Islampur", "Dewanganj", "Sarishabari", "Madarganj", "Bokshiganj", "Melandaha"],
-            "Sherpur": ["Sadar", "Nakla", "Nalitabari", "Jhenaigati", "Sreebardi"],
-            "Netrokona": ["Sadar", "Atpara", "Barhatta", "Mohanganj", "Kalmakanda", "Durgapur", "Madan", "Kendua", "Purbadhala", "Khaliajuri"],
-            "Tangail": ["Sadar", "Delduar", "Mirzapur", "Bhuapur", "Ghatail", "Basail", "Nagarpur", "Kalihati", "Sakhipur", "Gopalpur", "Dhanbari", "Madhupur"],
-            "Kishoreganj": ["Sadar", "Hossainpur", "Karimganj", "Pakundia", "Nikli", "Bajitpur", "Kuliarchar", "Bhairab", "Mithamain", "Itna", "Katiadi", "Austagram", "Tarail"]
+        // প্রোডাক্ট ডাটাবেস (index.html এর সাথে মিল রেখে)
+        const products = {
+            "1": { name: "Kashmiri churi with 4 pics gungru", price: 550 },
+            "2": { name: "Rainbow কাঁচের চুড়ি (২ ডজন)", price: 220 },
+            "3": { name: "Silk Thread, stone and metal churi", price: 210 },
+            "4": { name: "Glass(Lace) Churi with 4 pics ghungru", price: 330 }
         };
 
-        // Populate Datalist
-        const distList = document.getElementById('districts');
-        Object.keys(locationData).sort().forEach(d => {
-            let opt = document.createElement('option');
-            opt.value = d;
-            distList.appendChild(opt);
-        });
+        function getOrderDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const productSize = urlParams.get('size');
 
-        // Load Product from LocalStorage
-        const productName = localStorage.getItem('selectedProductName') || "Premium Product";
-        const productPrice = parseInt(localStorage.getItem('selectedProductPrice')) || 0;
-        const productImg = localStorage.getItem('selectedProductImg');
+            if (productId && products[productId]) {
+                const product = products[productId];
+                const deliveryCharge = 130;
+                const totalBill = product.price + deliveryCharge;
 
-        document.getElementById('displayProductName').innerText = productName;
-        document.getElementById('displayPrice').innerText = productPrice;
-        document.getElementById('displayTotal').innerText = productPrice;
+                // UI আপডেট
+                document.getElementById('display-name').innerText = product.name;
+                document.getElementById('display-size').innerText = productSize || "N/A";
+                document.getElementById('display-price').innerText = product.price + " TK";
+                document.getElementById('display-total').innerText = totalBill + " TK";
 
-        if(productImg) {
-            const imgTag = document.getElementById('displayProductImg');
-            imgTag.src = productImg;
-            imgTag.classList.remove('hidden');
-        }
-
-        function updateThana() {
-            const dist = document.getElementById('district').value;
-            const thanaSelect = document.getElementById('thana');
-            
-            if (locationData[dist]) {
-                thanaSelect.innerHTML = '<option value="">নির্বাচন করুন</option>';
-                locationData[dist].sort().forEach(t => {
-                    let opt = document.createElement('option');
-                    opt.value = t; opt.innerText = t;
-                    thanaSelect.appendChild(opt);
-                });
-                calculateTotal(dist);
+                // হিডেন ইনপুট আপডেট (ভবিষ্যতে ফর্ম সাবমিট করার জন্য)
+                document.getElementById('input-product').value = product.name;
+                document.getElementById('input-size').value = productSize;
+                document.getElementById('input-total').value = totalBill;
             } else {
-                thanaSelect.innerHTML = '<option value="">আগে জেলা বেছে নিন</option>';
-                document.getElementById('displayDelivery').innerText = "0";
+                document.getElementById('display-name').innerText = "প্রোডাক্ট সিলেক্ট করা হয়নি";
             }
         }
 
-        function calculateTotal(dist) {
-            const delivery = (dist.toLowerCase() === 'dhaka') ? 100 : 130;
-            document.getElementById('displayDelivery').innerText = delivery;
-            document.getElementById('displayTotal').innerText = productPrice + delivery;
-            document.getElementById('chargeAmount').innerText = delivery;
-        }
-
-        function updatePaymentInfo() {
-            const method = document.getElementById('payMethod').value;
-            const details = document.getElementById('paymentDetails');
-            const target = document.getElementById('targetNumber');
-            if (method) {
-                details.classList.remove('hidden');
-                target.innerText = (method === 'bkash') ? '01821208028' : '01960848956';
-            } else {
-                details.classList.add('hidden');
-            }
-        }
-
-        document.getElementById('targetNumber').addEventListener('click', function() {
-            navigator.clipboard.writeText(this.innerText);
-            alert("নাম্বার কপি হয়েছে!");
-        });
-
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.innerText = "অর্ডার হচ্ছে...";
-
-            const formData = new FormData();
-            formData.append('name', document.getElementById('name').value);
-            formData.append('phone', document.getElementById('phone').value);
-            formData.append('address', document.getElementById('address').value);
-            formData.append('district', document.getElementById('district').value);
-            formData.append('thana', document.getElementById('thana').value);
-            formData.append('productName', productName);
-            formData.append('totalAmount', document.getElementById('displayTotal').innerText);
-            formData.append('payMethod', document.getElementById('payMethod').value);
-            formData.append('senderNum', document.getElementById('senderNum').value);
-
-            fetch('https://sora-collection-backend.onrender.com/place-order', {
-                method: 'POST',
-                body: formData
-            })
-            .then(res => res.json())
-            .then(data => {
-                if(data.success) {
-                    localStorage.clear();
-                    window.location.href = 'success.html';
-                } else {
-                    alert("সমস্যা হয়েছে, আবার চেষ্টা করুন।");
-                    btn.disabled = false;
-                }
-            })
-            .catch(() => {
-                alert("সার্ভার সমস্যা!");
-                btn.disabled = false;
-            });
-        });
+        // পেজ লোড হলে ফাংশনটি রান করবে
+        window.onload = getOrderDetails;
     </script>
 </body>
 </html>
