@@ -1,7 +1,6 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+const nodemailer = require('nodemailer'); // ইমেইল পাঠানোর জন্য
 
 const app = express();
 
@@ -9,20 +8,27 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MongoDB Atlas Connection String
-// Replace <db_password> with Orko8899 as per your provided password
-const mongoURI = "mongodb+srv://orkoofficial649_db_user:Orko8899@cluster0.usoryuv.mongodb.net/sora_collection?retryWrites=true&w=majority";
+// ডাটাবেস কানেকশন আমরা এখন করছি না
 
-mongoose.connect(mongoURI)
-    .then(() => console.log("SORA DB Connected successfully to MongoDB Atlas!"))
-    .catch(err => console.error("DB Connection Error: ", err));
-
-// Basic Route for Testing
+// Test Route
 app.get('/', (req, res) => {
-    res.send("SORA Collection Backend is running on MongoDB Atlas!");
+    res.send("SORA Backend is running (Without Database)!");
 });
 
-// Port Setup for Render
+// অর্ডার রিসিভ করার রুট
+app.post('/api/order', (req, res) => {
+    const orderData = req.body;
+    
+    // এখানে আমরা শুধু কনসোলে প্রিন্ট করছি
+    console.log("New Order Received:", orderData);
+    
+    // ডাটাবেস ছাড়াই সাকসেস মেসেজ পাঠানো
+    res.status(200).json({ 
+        success: true, 
+        message: "অর্ডারটি গ্রহণ করা হয়েছে (ডাটাবেস ছাড়াই)" 
+    });
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
