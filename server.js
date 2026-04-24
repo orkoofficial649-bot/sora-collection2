@@ -11,7 +11,7 @@ app.use(express.json());
 
 // MongoDB Atlas Connection String
 // Replace <db_password> with Orko8899 as per your provided password
-const mongoURI = "mongodb+srv://orkoofficial649_db_user:Orko8899@clustere.usoryuv.mongodb.net/sora_collection?retryWrites=true&w=majority";
+const mongoURI = "mongodb+srv://orkoofficial649_db_user:Orko8899@cluster0.usoryuv.mongodb.net/sora_collection?retryWrites=true&w=majority";
 
 mongoose.connect(mongoURI)
     .then(() => console.log("SORA DB Connected successfully to MongoDB Atlas!"))
