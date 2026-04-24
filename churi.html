@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churi Collection | SORA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+            background-color: #FFF0F5; /* Soft Pink Background */
+            color: #2D3436;
+            overflow-x: hidden;
+        }
+        .serif { font-family: 'Playfair Display', serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(236, 64, 122, 0.1);
+            border-radius: 2rem;
+        }
+        .btn-order {
+            background: linear-gradient(135deg, #ec407a, #ad1457);
+            transition: all 0.3s ease;
+        }
+        .btn-order:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(236, 64, 122, 0.3);
+        }
+        .stock-badge {
+            background: #ffe4e1;
+            color: #d81b60;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        /* Image slider scale effect */
+        .img-container img {
+            transition: transform 0.5s ease;
+        }
+        .img-container:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="text-center py-10 px-6" data-aos="fade-down">
+        <img src="https://i.ibb.co.com/mVgDt5Ff/Gemini-Generated-Image-uph57euph57euph5-removebg-preview.png" alt="SORA Logo" class="h-24 mx-auto mb-4">
+        <h1 class="serif text-4xl md:text-6xl text-pink-800 tracking-tight">Churi Collection</h1>
+        <div class="w-24 h-1 bg-pink-400 mx-auto mt-4 rounded-full"></div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+            <div class="glass-card p-6" data-aos="zoom-in">
+                <div class="grid grid-cols-2 gap-2 mb-4 overflow-hidden rounded-xl img-container">
+                    <img src="https://i.ibb.co.com/tMr7Cm0R/Polish-20260424-174956414-jpg.jpg" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/0kWYm2g/Polish-20260424-175036321-jpg.jpg" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/Kt34k19/Polish-20260424-175234084-jpg.jpg" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/Mk3K6J54/Polish-20260424-174907819-jpg.jpg" class="w-full h-40 object-cover">
+                </div>
+                <h3 class="serif text-2xl mb-2 text-gray-800">Kashmiri Churi with 4 pics Ghungru</h3>
+                <p class="text-pink-600 font-bold text-xl mb-3">Price: 550 Taka <span class="text-xs text-gray-400 font-normal">(Without delivery charge)</span></p>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-semibold mb-1">Size:</label>
+                    <select class="w-full p-2 rounded-lg border border-pink-100 outline-none">
+                        <option>Select Size (2.6, 2.8, 2.10)</option>
+                        <option>2.6</option>
+                        <option>2.8</option>
+                        <option>2.10</option>
+                    </select>
+                </div>
+                <p class="mb-4 text-sm">Stock: <span id="stock-1" class="stock-badge">Loading...</span></p>
+                <button onclick="window.location.href='order.html'" class="btn-order w-full text-white py-3 rounded-xl font-bold uppercase tracking-widest text-sm">Place Order</button>
+            </div>
+
+            <div class="glass-card p-6" data-aos="zoom-in" data-aos-delay="100">
+                <div class="grid grid-cols-2 gap-2 mb-4 overflow-hidden rounded-xl img-container">
+                    <img src="https://i.ibb.co.com/JWx9vQW6/Untitled-design-22.png" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/TDFpkWmY/1000110360-jpg.jpg" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/wrS7T8Kq/1000110362-jpg.jpg" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/KzB955Sf/1000110364-jpg.jpg" class="w-full h-40 object-cover">
+                </div>
+                <h3 class="serif text-2xl mb-2 text-gray-800">Rainbow কাঁচের চুড়ি (২ ডজন)</h3>
+                <p class="text-pink-600 font-bold text-xl mb-3">Price: 220 Taka <span class="text-xs text-gray-400 font-normal">(Without delivery charge)</span></p>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-semibold mb-1">Size:</label>
+                    <select class="w-full p-2 rounded-lg border border-pink-100">
+                        <option>Select Size (2.6, 2.8, 2.10)</option>
+                        <option>2.6</option>
+                        <option>2.8</option>
+                        <option>2.10</option>
+                    </select>
+                </div>
+                <p class="mb-4 text-sm">Stock: <span id="stock-2" class="stock-badge">Loading...</span></p>
+                <button onclick="window.location.href='order.html'" class="btn-order w-full text-white py-3 rounded-xl font-bold uppercase tracking-widest text-sm">Place Order</button>
+            </div>
+
+            <div class="glass-card p-6" data-aos="zoom-in">
+                <div class="grid grid-cols-2 gap-2 mb-4 overflow-hidden rounded-xl img-container">
+                    <img src="https://i.ibb.co.com/Jw2SZySC/Untitled-design-20.png" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/270C5jzD/Untitled-design-19.png" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/PZN152Sw/Untitled-design-18.png" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/ZzY5y0SG/1000110357-jpg.jpg" class="w-full h-40 object-cover">
+                </div>
+                <h3 class="serif text-2xl mb-2 text-gray-800">Silk Thread & Metal Churi (১ ডজন)</h3>
+                <p class="text-pink-600 font-bold text-xl mb-3">Price: 210 Taka <span class="text-xs text-gray-400 font-normal">(Without delivery charge)</span></p>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-semibold mb-1">Size:</label>
+                    <select class="w-full p-2 rounded-lg border border-pink-100">
+                        <option>Select Size (2.6, 2.8, 2.10)</option>
+                        <option>2.6</option>
+                        <option>2.8</option>
+                        <option>2.10</option>
+                    </select>
+                </div>
+                <p class="mb-4 text-sm">Stock: <span id="stock-3" class="stock-badge">Loading...</span></p>
+                <button onclick="window.location.href='order.html'" class="btn-order w-full text-white py-3 rounded-xl font-bold uppercase tracking-widest text-sm">Place Order</button>
+            </div>
+
+            <div class="glass-card p-6" data-aos="zoom-in" data-aos-delay="100">
+                <div class="grid grid-cols-2 gap-2 mb-4 overflow-hidden rounded-xl img-container">
+                    <img src="https://i.ibb.co.com/4R4Tddmp/1000110514-jpg.jpg" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/ynwtHC75/1000110525-jpg.jpg" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/JZMVt73/1000110536-jpg.jpg" class="w-full h-40 object-cover">
+                    <img src="https://i.ibb.co.com/4R4Tddmp/1000110514-jpg.jpg" class="w-full h-40 object-cover">
+                </div>
+                <h3 class="serif text-2xl mb-2 text-gray-800">Glass(Lace) with 4 pics Ghungru</h3>
+                <p class="text-pink-600 font-bold text-xl mb-3">Price: 330 Taka <span class="text-xs text-gray-400 font-normal">(Without delivery charge)</span></p>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-semibold mb-1">Size:</label>
+                    <select class="w-full p-2 rounded-lg border border-pink-100">
+                        <option>Select Size (2.6, 2.8, 2.10)</option>
+                        <option>2.6</option>
+                        <option>2.8</option>
+                        <option>2.10</option>
+                    </select>
+                </div>
+                <p class="mb-4 text-sm">Stock: <span id="stock-4" class="stock-badge">Loading...</span></p>
+                <button onclick="window.location.href='order.html'" class="btn-order w-full text-white py-3 rounded-xl font-bold uppercase tracking-widest text-sm">Place Order</button>
+            </div>
+
+        </div>
+
+        <div class="mt-20 bg-white/50 p-8 rounded-[2rem] border-2 border-dashed border-pink-300 text-center" data-aos="fade-up">
+            <p class="text-gray-700 leading-relaxed text-sm md:text-base italic">
+                "কোনো কারণে যদি ডেলিভারি ম্যান থেকে পাওয়ার পর পণ্য যদি ভেঙে থাকে তাহলে সাথে ডেলিভারি ম্যান এর কাছে দিয়ে রিটার্ন করুন নয়তো সরা কালেকশন এর হেল্প ডেস্ক এ যোগাযোগ করুন। ডেলিভারি ম্যান থেকে পণ্য হাতে নেওয়ার পর যদি কোনো ভাঙ্গা পেয়ে থাকেন তাহলে পণ্য ফেরত নেওয়া যাবে না তাই দয়া করে পণ্য ডেলিভারি ম্যান এর সামনেই খুলে দেখুন।"
+            </p>
+        </div>
+    </main>
+
+    <footer class="py-10 text-center text-gray-400 text-xs uppercase tracking-widest">
+        © 2026 SORA Collection | Timeless Elegance
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Google Sheet Stock Sync Logic (Dummy example)
+        // আপনাকে আপনার গুগল শিট 'Public' করে তার CSV বা JSON লিঙ্ক এখানে ব্যবহার করতে হবে।
+        async function updateStock() {
+            try {
+                // উদাহরণ: নিচের লিঙ্কটি আপনার গুগল শিট এর JSON লিঙ্ক হতে পারে
+                // const response = await fetch('YOUR_GOOGLE_SHEET_API_URL');
+                // const data = await response.json();
+                
+                // সাময়িকভাবে ম্যানুয়াল ডাটা দেখাচ্ছি
+                document.getElementById('stock-1').innerText = "12 Pcs Left";
+                document.getElementById('stock-2').innerText = "Available";
+                document.getElementById('stock-3').innerText = "8 Pcs Left";
+                document.getElementById('stock-4').innerText = "Limited Stock";
+            } catch (error) {
+                console.log("Stock update failed", error);
+            }
+        }
+        updateStock();
+    </script>
+</body>
+</html>
