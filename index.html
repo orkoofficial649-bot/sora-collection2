@@ -11,7 +11,7 @@
         body {
             font-family: 'Poppins', 'Hind Siliguri', sans-serif;
             scroll-behavior: smooth;
-            background: #FFF0F5; 
+            background: #FFF0F5;
             color: #2D3436;
             overflow-x: hidden;
             position: relative;
@@ -34,7 +34,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 10vw;
             font-weight: 900;
-            color: rgba(236, 64, 122, 0.07); 
+            color: rgba(236, 64, 122, 0.07);
             text-transform: uppercase;
             display: inline-block;
             transition: transform 0.1s ease-out;
@@ -42,7 +42,7 @@
 
         .serif { font-family: 'Playfair Display', serif; }
         .script-font { font-family: 'Great Vibes', cursive; }
-        
+       
         /* Header Jump Animation */
         .jump-letter {
             display: inline-block;
@@ -51,15 +51,15 @@
 
         @keyframes letterJump {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); } /* কতটুকু উপরে লাফাবে */
+            50% { transform: translateY(-15px); }
         }
 
-        /* প্রতি অক্ষরের জন্য আলাদা Delay যাতে সুন্দর ঢেউয়ের মতো লাগে */
+        /* Letter Delays */
         .jump-letter:nth-child(1) { animation-delay: 0.1s; }
         .jump-letter:nth-child(2) { animation-delay: 0.2s; }
         .jump-letter:nth-child(3) { animation-delay: 0.3s; }
         .jump-letter:nth-child(4) { animation-delay: 0.4s; }
-        .jump-letter:nth-child(5) { animation-delay: 0.5s; } /* Space */
+        .jump-letter:nth-child(5) { animation-delay: 0.5s; }
         .jump-letter:nth-child(6) { animation-delay: 0.6s; }
         .jump-letter:nth-child(7) { animation-delay: 0.7s; }
         .jump-letter:nth-child(8) { animation-delay: 0.8s; }
@@ -137,6 +137,7 @@
             background: white;
             border-radius: 2.5rem;
             box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
         }
 
         @keyframes float {
@@ -175,17 +176,17 @@
     <div class="sticky-wrapper">
         <header class="hero-container">
             <img src="https://i.ibb.co.com/HpnBKDVL/Polish-20260424-175635175-jpg.jpg" alt="SORA Header" class="hero-image" id="heroImg">
-            <div class="relative z-20 text-center px-6">
+            <div class="relative z-20 text-center px-4 w-full">
                 <h2 class="script-font text-4xl md:text-7xl text-pink-100/90 mb-2 drop-shadow-lg" data-aos="fade-down">Welcome to</h2>
-                
-                <h1 class="serif text-4xl md:text-8xl uppercase font-bold tracking-[0.15em] text-white drop-shadow-2xl">
+               
+                <h1 class="serif text-[28px] sm:text-4xl md:text-8xl uppercase font-bold tracking-[0.05em] md:tracking-[0.15em] text-white drop-shadow-2xl whitespace-nowrap">
                     <span class="jump-letter">S</span><span class="jump-letter">O</span><span class="jump-letter">R</span><span class="jump-letter">A</span>
                     <span class="jump-letter">&nbsp;</span>
                     <span class="jump-letter">C</span><span class="jump-letter">O</span><span class="jump-letter">L</span><span class="jump-letter">L</span><span class="jump-letter">E</span><span class="jump-letter">C</span><span class="jump-letter">T</span><span class="jump-letter">I</span><span class="jump-letter">O</span><span class="jump-letter">N</span>
                 </h1>
 
-                <div class="mt-10" data-aos="fade-up" data-aos-delay="400">
-                    <p class="text-[10px] md:text-sm font-medium tracking-[0.6em] uppercase text-white/90 border-y border-white/30 py-5 px-8 inline-block backdrop-blur-sm">
+                <div class="mt-8 md:mt-10" data-aos="fade-up" data-aos-delay="400">
+                    <p class="text-[9px] md:text-sm font-medium tracking-[0.3em] md:tracking-[0.6em] uppercase text-white/90 border-y border-white/30 py-4 md:py-5 px-6 md:px-8 inline-block backdrop-blur-sm">
                         Elegance is the only beauty that never fades
                     </p>
                 </div>
@@ -193,7 +194,7 @@
         </header>
 
         <div class="scrolling-content">
-            <main class="max-w-7xl mx-auto py-32 px-6">
+            <main class="max-w-7xl mx-auto py-20 md:py-32 px-6">
                 <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
                     <div class="group" data-aos="fade-up">
                         <div class="content-card overflow-hidden cursor-pointer" onclick="window.location.href='churi.html'">
@@ -201,9 +202,9 @@
                                 <img src="https://i.ibb.co.com/sdzCrYry/Polish-20260424-174620990-jpg.jpg" alt="Bangles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
                                 <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                             </div>
-                            <div class="p-10 text-center">
-                                <h2 class="text-3xl serif text-gray-800 mb-6">চুড়ি কালেকশন</h2>
-                                <button class="btn-premium text-white px-12 py-4 rounded-full font-bold tracking-widest uppercase text-xs">Explore Bangles</button>
+                            <div class="p-8 md:p-10 text-center">
+                                <h2 class="text-2xl md:text-3xl serif text-gray-800 mb-6">চুড়ি কালেকশন</h2>
+                                <button class="btn-premium text-white px-10 py-4 rounded-full font-bold tracking-widest uppercase text-xs">Explore Bangles</button>
                             </div>
                         </div>
                     </div>
@@ -214,9 +215,9 @@
                                 <img src="https://i.ibb.co.com/Pvdj974W/Gemini-Generated-Image-z2iq5gz2iq5gz2iq.png" alt="Saree" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
                                 <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                             </div>
-                            <div class="p-10 text-center">
-                                <h2 class="text-3xl serif text-gray-800 mb-6">শাড়ি কালেকশন</h2>
-                                <button class="btn-premium text-white px-12 py-4 rounded-full font-bold tracking-widest uppercase text-xs">Explore Sarees</button>
+                            <div class="p-8 md:p-10 text-center">
+                                <h2 class="text-2xl md:text-3xl serif text-gray-800 mb-6">শাড়ি কালেকশন</h2>
+                                <button class="btn-premium text-white px-10 py-4 rounded-full font-bold tracking-widest uppercase text-xs">Explore Sarees</button>
                             </div>
                         </div>
                     </div>
@@ -224,24 +225,24 @@
             </main>
 
             <section class="max-w-6xl mx-auto px-6">
-                <div class="mb-32 rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white ring-1 ring-pink-100" data-aos="zoom-out">
+                <div class="mb-20 md:mb-32 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border-[4px] md:border-[8px] border-white ring-1 ring-pink-100" data-aos="zoom-out">
                     <img src="https://i.ibb.co.com/x9b5x1F/Discover-the-finest-collection-of-authentic-sarees-and-handcrafted-Kashmiri-bangles-designed-to-defi.png" alt="SORA Banner" class="w-full">
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-10 mb-32">
-                    <div class="content-card p-12 flex flex-col justify-center border-l-4 border-l-pink-500" data-aos="fade-right">
-                        <h3 class="text-2xl serif text-pink-800 mb-5">আমাদের শাড়ি কালেকশন</h3>
-                        <p class="leading-relaxed text-gray-600 italic">"একটি শাড়ি কেবল ছয় গজ কাপড় নয়, এটি আমাদের সংস্কৃতির পরিচয়। Sora Collection-এ আমরা প্রতিটি শাড়ি বাছাই করি অত্যন্ত যত্ন সহকারে।"</p>
+                <div class="grid md:grid-cols-2 gap-10 mb-20 md:mb-32">
+                    <div class="content-card p-8 md:p-12 flex flex-col justify-center border-l-4 border-l-pink-500" data-aos="fade-right">
+                        <h3 class="text-xl md:text-2xl serif text-pink-800 mb-5">আমাদের শাড়ি কালেকশন</h3>
+                        <p class="leading-relaxed text-gray-600 italic text-sm md:text-base">"একটি শাড়ি কেবল ছয় গজ কাপড় নয়, এটি আমাদের সংস্কৃতির পরিচয়। Sora Collection-এ আমরা প্রতিটি শাড়ি বাছাই করি অত্যন্ত যত্ন সহকারে।"</p>
                     </div>
 
-                    <div class="content-card p-12 flex flex-col justify-center text-right border-r-4 border-r-pink-500" data-aos="fade-left">
-                        <h3 class="text-2xl serif text-pink-800 mb-5">কাশ্মীরি চুড়ি</h3>
-                        <p class="leading-relaxed text-gray-600 italic">"হাতের এক সেট সুন্দর চুড়ি আপনার পুরো সাজকে পূর্ণতা দেয়। আমাদের সিগনেচার কাশ্মীরি চুড়িগুলো মূলত কারিগরদের হাতের জাদুতে তৈরি।"</p>
+                    <div class="content-card p-8 md:p-12 flex flex-col justify-center text-left md:text-right border-r-4 border-r-pink-500" data-aos="fade-left">
+                        <h3 class="text-xl md:text-2xl serif text-pink-800 mb-5">কাশ্মীরি চুড়ি</h3>
+                        <p class="leading-relaxed text-gray-600 italic text-sm md:text-base">"হাতের এক সেট সুন্দর চুড়ি আপনার পুরো সাজকে পূর্ণতা দেয়। আমাদের সিগনেচার কাশ্মীরি চুড়িগুলো মূলত কারিগরদের হাতের জাদুতে তৈরি।"</p>
                     </div>
                 </div>
 
-                <div class="content-card p-12 md:p-20 text-center mb-32" data-aos="fade-up">
-                    <h3 class="text-3xl md:text-4xl serif text-pink-900 mb-16 uppercase tracking-widest">কেন আমাদের বিশ্বাস করবেন?</h3>
+                <div class="content-card p-10 md:p-20 text-center mb-20 md:mb-32" data-aos="fade-up">
+                    <h3 class="text-2xl md:text-4xl serif text-pink-900 mb-12 md:mb-16 uppercase tracking-widest">কেন আমাদের বিশ্বাস করবেন?</h3>
                     <div class="grid md:grid-cols-3 gap-10">
                         <div class="trust-item">
                             <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">১</div>
@@ -261,63 +262,63 @@
                     </div>
                 </div>
 
-                <div class="max-w-4xl mx-auto mb-32" data-aos="fade-up">
-                    <div class="contact-box p-12 md:p-20 text-center">
+                <div class="max-w-4xl mx-auto mb-20 md:mb-32" data-aos="fade-up">
+                    <div class="contact-box p-8 md:p-20 text-center">
                         <h2 class="serif text-4xl md:text-6xl text-gray-900 mb-4 tracking-tighter">Get In Touch</h2>
                         <p class="text-pink-500 font-semibold mb-12 tracking-widest uppercase text-xs">যেকোনো প্রয়োজনে আমাদের পাশে পাবেন</p>
-                        
+                       
                         <div class="grid md:grid-cols-2 gap-6 mb-8">
-                            <a href="tel:+8809645018666" class="flex flex-col p-8 rounded-3xl bg-pink-50/50 hover:bg-pink-100 transition-all group">
+                            <a href="tel:+8809645018666" class="flex flex-col p-6 md:p-8 rounded-3xl bg-pink-50/50 hover:bg-pink-100 transition-all group overflow-hidden">
                                 <span class="text-pink-600 font-bold text-[10px] tracking-widest mb-2">CALL US</span>
-                                <span class="text-xl text-gray-800 font-semibold group-hover:scale-105 transition-transform">+8809645018666</span>
+                                <span class="text-lg md:text-xl text-gray-800 font-semibold group-hover:scale-105 transition-transform">+8809645018666</span>
                             </a>
-                            <a href="mailto:soracollection.help@gmail.com" class="flex flex-col p-8 rounded-3xl bg-pink-50/50 hover:bg-pink-100 transition-all group">
+                            <a href="mailto:soracollection.help@gmail.com" class="flex flex-col p-6 md:p-8 rounded-3xl bg-pink-50/50 hover:bg-pink-100 transition-all group overflow-hidden">
                                 <span class="text-pink-600 font-bold text-[10px] tracking-widest mb-2">EMAIL US</span>
-                                <span class="text-sm text-gray-800 font-semibold truncate group-hover:scale-105 transition-transform">soracollection.help@gmail.com</span>
+                                <span class="text-xs md:text-sm text-gray-800 font-semibold group-hover:scale-105 transition-transform break-all">soracollection.help@gmail.com</span>
                             </a>
                         </div>
-                        
-                        <a href="#" class="block p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all">
+                       
+                        <div class="block p-8 rounded-3xl bg-gray-50">
                             <span class="text-gray-400 font-bold text-[10px] tracking-widest mb-2 uppercase">Our Location</span>
-                            <p class="text-gray-700">Rawson Sarak, Chowrasta. Gazipur Sadar, Gazipur 1702</p>
-                        </a>
+                            <p class="text-gray-700 text-sm md:text-base">Rawson Sarak, Chowrasta. Gazipur Sadar, Gazipur 1702</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="py-32 bg-pink-50/30">
+            <section class="py-20 md:py-32 bg-pink-50/30">
                 <div class="max-w-5xl mx-auto text-center px-6" data-aos="fade-up">
-                    <h4 class="serif text-3xl text-gray-800 mb-16 tracking-widest uppercase">Follow Our Journey</h4>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+                    <h4 class="serif text-2xl md:text-3xl text-gray-800 mb-12 md:mb-16 tracking-widest uppercase">Follow Our Journey</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
                         <a href="https://www.facebook.com/share/1Chw6jaWm3/" target="_blank" class="group flex flex-col items-center">
-                            <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" class="w-14 h-14 mb-4 social-icon shadow-lg rounded-xl" alt="FB">
-                            <span class="text-[11px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">Facebook</span>
+                            <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" class="w-12 h-12 md:w-14 md:h-14 mb-4 social-icon shadow-lg rounded-xl" alt="FB">
+                            <span class="text-[10px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">Facebook</span>
                         </a>
                         <a href="https://www.instagram.com/soracollection.xyz" target="_blank" class="group flex flex-col items-center">
-                            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-14 h-14 mb-4 social-icon shadow-lg rounded-xl" alt="IG">
-                            <span class="text-[11px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">Instagram</span>
+                            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-12 h-12 md:w-14 md:h-14 mb-4 social-icon shadow-lg rounded-xl" alt="IG">
+                            <span class="text-[10px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">Instagram</span>
                         </a>
                         <a href="https://wa.me/message/P5OZL4WTUGJSL1" target="_blank" class="group flex flex-col items-center">
-                            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-14 h-14 mb-4 social-icon shadow-lg rounded-xl" alt="WA">
-                            <span class="text-[11px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">WhatsApp</span>
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-12 h-12 md:w-14 md:h-14 mb-4 social-icon shadow-lg rounded-xl" alt="WA">
+                            <span class="text-[10px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">WhatsApp</span>
                         </a>
                         <a href="https://www.tiktok.com/@sora.collection1" target="_blank" class="group flex flex-col items-center">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-14 h-14 mb-4 social-icon shadow-lg rounded-xl" alt="TK">
-                            <span class="text-[11px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">TikTok</span>
+                            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-12 h-12 md:w-14 md:h-14 mb-4 social-icon shadow-lg rounded-xl" alt="TK">
+                            <span class="text-[10px] font-bold text-gray-400 tracking-widest uppercase group-hover:text-pink-600 transition-colors">TikTok</span>
                         </a>
                     </div>
                 </div>
             </section>
 
-            <footer class="py-20 text-center bg-white border-t border-pink-50">
-                <img src="https://i.ibb.co.com/4R143dCb/Gemini-Generated-Image-uph57euph57euph5-removebg-preview.png" class="h-20 mx-auto mb-8 opacity-20 hover:opacity-100 transition-opacity duration-1000">
+            <footer class="py-16 md:py-20 text-center bg-white border-t border-pink-50">
+                <img src="https://i.ibb.co.com/4R143dCb/Gemini-Generated-Image-uph57euph57euph5-removebg-preview.png" class="h-16 md:h-20 mx-auto mb-8 opacity-20 hover:opacity-100 transition-opacity duration-1000">
                 <div class="max-w-2xl mx-auto mb-10 px-6">
-                    <h5 class="serif text-xl text-pink-800 mb-3">About SORA Collection</h5>
-                    <p class="text-sm text-gray-500 leading-relaxed italic">
+                    <h5 class="serif text-lg md:text-xl text-pink-800 mb-3">About SORA Collection</h5>
+                    <p class="text-xs md:text-sm text-gray-500 leading-relaxed italic">
                         SORA Collection is a premier fashion destination dedicated to bringing you the finest authentic sarees and handcrafted Kashmiri bangles.
                     </p>
                 </div>
-                <p class="text-[10px] text-gray-400 uppercase tracking-[0.8em]">© 2026 SORA Collection | Timeless Elegance</p>
+                <p class="text-[9px] md:text-[10px] text-gray-400 uppercase tracking-[0.4em] md:tracking-[0.8em] px-4">© 2026 SORA Collection | Timeless Elegance</p>
             </footer>
         </div>
     </div>
@@ -327,21 +328,21 @@
         AOS.init({
             duration: 1200,
             once: true,
-            offset: 150
+            offset: 100
         });
 
         window.addEventListener('scroll', function() {
             const scrollPos = window.pageYOffset;
             const heroImg = document.getElementById('heroImg');
             const letters = document.querySelectorAll('.watermark-letter');
-            
+           
             if(heroImg) {
                 heroImg.style.transform = `scale(${1 + scrollPos / 5000})`;
                 heroImg.style.opacity = Math.max(0.1, (1 - scrollPos / 1200));
             }
 
             letters.forEach((letter, index) => {
-                const jump = Math.sin((scrollPos * 0.005) + index) * 25; 
+                const jump = Math.sin((scrollPos * 0.005) + index) * 20;
                 letter.style.transform = `translateY(${jump}px)`;
             });
         });
