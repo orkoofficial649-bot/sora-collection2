@@ -11,13 +11,13 @@
         body {
             font-family: 'Poppins', 'Hind Siliguri', sans-serif;
             scroll-behavior: smooth;
-            background: #FFFBFC; /* সফট লাক্সারি ব্যাকগ্রাউন্ড */
+            background: #FFF0F5; /* লাক্সারি বেবি পিংক ব্যাকগ্রাউন্ড */
             color: #2D3436;
             overflow-x: hidden;
         }
         .serif { font-family: 'Playfair Display', serif; }
         .script-font { font-family: 'Great Vibes', cursive; }
-        
+       
         /* প্যারালাক্স হিরো অপ্টিমাইজেশন */
         .hero-container {
             position: sticky;
@@ -37,14 +37,15 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.60);
             transition: transform 0.1s linear;
         }
 
         .scrolling-content {
             position: relative;
             z-index: 10;
-            background: linear-gradient(180deg, transparent 0%, #FFFBFC 10%, #FFFBFC 100%);
+            /* স্ক্রলিং এর সময় ব্যাকগ্রাউন্ড ট্রানজিশন */
+            background: linear-gradient(180deg, transparent 0%, #FFF0F5 15%, #FFF0F5 100%);
         }
 
         /* কার্ড ডিজাইন রিফাইনমেন্ট */
@@ -52,21 +53,22 @@
             background: #ffffff;
             border-radius: 2rem;
             transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
-            border: 1px solid rgba(236, 64, 122, 0.05);
+            box-shadow: 0 15px 35px rgba(236, 64, 122, 0.05);
+            border: 1px solid rgba(236, 64, 122, 0.1);
         }
         .content-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(236, 64, 122, 0.1);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(236, 64, 122, 0.15);
         }
 
         .btn-premium {
-            background: linear-gradient(135deg, #ec407a, #ad1457);
+            background: linear-gradient(135deg, #f06292, #ad1457);
             transition: all 0.3s ease;
             box-shadow: 0 10px 20px rgba(236, 64, 122, 0.2);
         }
         .btn-premium:hover {
             letter-spacing: 2px;
+            transform: scale(1.05);
             box-shadow: 0 15px 25px rgba(236, 64, 122, 0.4);
         }
 
@@ -74,26 +76,19 @@
             background: #fff;
             padding: 2rem 1.5rem;
             border-radius: 1.5rem;
-            border-bottom: 4px solid #ec407a;
+            border-bottom: 4px solid #f06292;
             transition: 0.3s ease;
         }
         .trust-item:hover {
             transform: scale(1.03);
-            background: #FFF5F8;
+            background: #FFF9FB;
         }
 
         .contact-box {
             background: white;
             border-radius: 2.5rem;
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 40px 80px -20px rgba(236, 64, 122, 0.1);
         }
-
-        /* স্মুথ অ্যানিমেশন */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        .animate-float { animation: float 5s ease-in-out infinite; }
 
         .social-icon {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -109,10 +104,10 @@
         <header class="hero-container">
             <img src="https://i.ibb.co.com/G3Tw0XhX/Define-your-grace-every-single-day-1.png" alt="SORA Header" class="hero-image" id="heroImg">
             <div class="relative z-20 text-center px-6">
-                <h2 class="script-font text-5xl md:text-8xl text-pink-100/90 mb-4 drop-shadow-lg" data-aos="fade-down">Welcome to</h2>
-                <h1 class="serif text-5xl md:text-9xl uppercase font-bold tracking-[0.2em] text-white drop-shadow-2xl" data-aos="zoom-in">SORA</h1>
+                <h2 class="script-font text-5xl md:text-7xl text-pink-100/90 mb-2 drop-shadow-lg" data-aos="fade-down">Welcome to</h2>
+                <h1 class="serif text-4xl md:text-8xl uppercase font-bold tracking-[0.15em] text-white drop-shadow-2xl" data-aos="zoom-in">SORA COLLECTION</h1>
                 <div class="mt-10" data-aos="fade-up" data-aos-delay="400">
-                    <p class="text-[10px] md:text-sm font-medium tracking-[0.6em] uppercase text-white/90 border-y border-white/30 py-5 px-8 inline-block backdrop-blur-sm">
+                    <p class="text-[10px] md:text-sm font-medium tracking-[0.5em] uppercase text-white/95 border-y border-white/40 py-5 px-8 inline-block backdrop-blur-md bg-white/5">
                         Elegance is the only beauty that never fades
                     </p>
                 </div>
@@ -120,13 +115,13 @@
         </header>
 
         <div class="scrolling-content">
-            <main class="max-w-7xl mx-auto py-32 px-6">
+            <main class="max-w-7xl mx-auto py-24 px-6">
                 <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
                     <div class="group" data-aos="fade-up">
                         <div class="content-card overflow-hidden cursor-pointer" onclick="window.location.href='churi.html'">
                             <div class="relative overflow-hidden aspect-[4/5]">
-                                <img src="https://i.ibb.co.com/tMppvhjB/Gemini-Generated-Image-hgy1ijhgy1ijhgy1.png" alt="Bangles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                                <img src="https://i.ibb.co.com/sdzCrYry/Polish-20260424-174620990-jpg.jpg" alt="Bangles Collection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                             </div>
                             <div class="p-10 text-center">
                                 <h2 class="text-3xl serif text-gray-800 mb-6">চুড়ি কালেকশন</h2>
@@ -139,7 +134,7 @@
                         <div class="content-card overflow-hidden cursor-pointer" onclick="window.location.href='sharee.html'">
                             <div class="relative overflow-hidden aspect-[4/5]">
                                 <img src="https://i.ibb.co.com/Pvdj974W/Gemini-Generated-Image-z2iq5gz2iq5gz2iq.png" alt="Saree" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                             </div>
                             <div class="p-10 text-center">
                                 <h2 class="text-3xl serif text-gray-800 mb-6">শাড়ি কালেকশন</h2>
@@ -151,7 +146,7 @@
             </main>
 
             <section class="max-w-6xl mx-auto px-6">
-                <div class="mb-32 rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white ring-1 ring-pink-100" data-aos="zoom-out">
+                <div class="mb-32 rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white ring-1 ring-pink-200" data-aos="zoom-out">
                     <img src="https://i.ibb.co.com/x9b5x1F/Discover-the-finest-collection-of-authentic-sarees-and-handcrafted-Kashmiri-bangles-designed-to-defi.png" alt="SORA Banner" class="w-full">
                 </div>
 
@@ -192,7 +187,7 @@
                     <div class="contact-box p-12 md:p-20 text-center">
                         <h2 class="serif text-4xl md:text-6xl text-gray-900 mb-4 tracking-tighter">Get In Touch</h2>
                         <p class="text-pink-500 font-semibold mb-12 tracking-widest uppercase text-xs">যেকোনো প্রয়োজনে আমাদের পাশে পাবেন</p>
-                        
+                       
                         <div class="grid md:grid-cols-2 gap-6 mb-8">
                             <a href="tel:+8809645018666" class="flex flex-col p-8 rounded-3xl bg-pink-50/50 hover:bg-pink-100 transition-all group">
                                 <span class="text-pink-600 font-bold text-[10px] tracking-widest mb-2">CALL US</span>
@@ -203,16 +198,16 @@
                                 <span class="text-sm text-gray-800 font-semibold truncate group-hover:scale-105 transition-transform">soracollection.help@gmail.com</span>
                             </a>
                         </div>
-                        
-                        <a href="https://maps.google.com/?q=Gazipur+Sadar+1702" target="_blank" class="block p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all">
+                       
+                        <div class="block p-8 rounded-3xl bg-gray-50">
                             <span class="text-gray-400 font-bold text-[10px] tracking-widest mb-2 uppercase">Our Location</span>
                             <p class="text-gray-700">Rawson Sarak, Chowrasta. Gazipur Sadar, Gazipur 1702</p>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="py-32 bg-pink-50/30">
+            <section class="py-24 bg-white/50">
                 <div class="max-w-5xl mx-auto text-center px-6" data-aos="fade-up">
                     <h4 class="serif text-3xl text-gray-800 mb-16 tracking-widest uppercase">Follow Our Journey</h4>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
@@ -236,8 +231,8 @@
                 </div>
             </section>
 
-            <footer class="py-20 text-center bg-white border-t border-pink-50">
-                <img src="https://i.ibb.co.com/4R143dCb/Gemini-Generated-Image-uph57euph57euph5-removebg-preview.png" class="h-20 mx-auto mb-8 opacity-20 hover:opacity-100 transition-opacity duration-1000">
+            <footer class="py-20 text-center bg-white border-t border-pink-100">
+                <img src="https://i.ibb.co.com/4R143dCb/Gemini-Generated-Image-uph57euph57euph5-removebg-preview.png" class="h-20 mx-auto mb-8 opacity-20 hover:opacity-100 transition-opacity duration-1000" alt="Footer Logo">
                 <p class="text-[10px] text-gray-400 uppercase tracking-[0.8em]">© 2026 SORA Collection | Timeless Elegance</p>
             </footer>
         </div>
@@ -245,22 +240,18 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // AOS Initialization
         AOS.init({
             duration: 1200,
             once: true,
             offset: 150
         });
 
-        // Parallax and Scroll Effects
         window.addEventListener('scroll', function() {
             const scrollPos = window.pageYOffset;
             const heroImg = document.getElementById('heroImg');
-            
+           
             if(heroImg) {
-                // Smooth Parallax Zoom
                 heroImg.style.transform = `scale(${1 + scrollPos / 5000})`;
-                // Smooth Opacity Fade
                 heroImg.style.opacity = Math.max(0.1, (1 - scrollPos / 1200));
             }
         });
