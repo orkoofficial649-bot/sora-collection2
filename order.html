@@ -88,7 +88,7 @@
                     </p>
                     <div class="mt-3">
                         <label class="text-xs font-bold">যে নাম্বার থেকে টাকা পাঠিয়েছেন (১১ ডিজিট)</label>
-                        <input type="tel" name="sender_number" class="input-field text-sm" placeholder="01XXXXXXXXX" pattern="[0-9]{11}">
+                        <input type="tel" id="sender-num" name="sender_number" class="input-field text-sm" placeholder="01XXXXXXXXX" pattern="[0-9]{11}">
                     </div>
                     <div class="mt-3">
                         <label class="text-xs font-bold">পেমেন্ট স্ক্রিনশট আপলোড করুন</label>
@@ -102,7 +102,6 @@
     </div>
 
     <script>
-        // জেলা এবং থানা ডাটা
         const locationData = {
             "Dhaka": ["Kotwali","Mohammadpur","Lalbagh","Sutrapur","Motijheel","Demra","Sabujbagh","Mirpur","Gulshan","Uttara","Pallabi","Cantonment","Dhanmondi","Tejgaon","Ramna","Keraniganj","Dohar","Nawabganj","Savar","Dhamrai"],
             "Narsingdi": ["Sadar","Monohardi","Shibpur","Palash","Belabo","Raipura"],
@@ -143,7 +142,6 @@
             "Kishoreগঞ্জ": ["Sadar","Hossainpur","Karimganj","Pakundia","Nikli","Bajitpur","Kuliarchar","Bhairab","Mithamain","Itna","Katiadi","Austagram","Tarail"]
         };
 
-        // প্রোডাক্ট ডাটাবেস
         const productList = {
             "1": { name: "Kashmiri churi with 4 pics gungru", price: 550, img: "https://i.ibb.co.com/tMr7Cm0R/Polish-20260424-174956414-jpg.jpg" },
             "2": { name: "Rainbow কাঁচের চুড়ি (২ ডজন)", price: 220, img: "https://i.ibb.co.com/JWx9vQW6/Untitled-design-22.png" },
@@ -153,7 +151,6 @@
 
         let prodPrice = 0;
 
-        // ইনিশিয়াল ডাটা লোড
         window.onload = function() {
             const params = new URLSearchParams(window.location.search);
             const id = params.get('id');
@@ -169,7 +166,6 @@
                 updateTotal();
             }
 
-            // জেলা লোড
             const distSelect = document.getElementById('district');
             for(let jela in locationData) {
                 let opt = document.createElement('option');
@@ -193,8 +189,6 @@
                     opt.innerHTML = t;
                     thanaSelect.appendChild(opt);
                 });
-                
-                // চার্জ ক্যালকুলেশন
                 const charge = (jela === "Dhaka") ? 100 : 140;
                 chargeSpan.innerText = charge;
                 updateTotal();
@@ -202,7 +196,7 @@
         }
 
         function updateTotal() {
-            const charge = parseInt(document.getElementById('d-charge').innerText);
+            const charge = parseInt(document.getElementById('d-charge').innerText) || 0;
             document.getElementById('total-bill').innerText = prodPrice + charge;
         }
 
@@ -222,10 +216,9 @@
         function copyNum() {
             const num = document.getElementById('pay-number').innerText;
             navigator.clipboard.writeText(num);
-            alert("নাম্বারটি কপি হয়েছে!");
+            alert("নাম্বারটি কপি হয়েছে!");
         }
 
-        // EmailJS setup (ইমেইল পাঠানোর জন্য)
         (function(){
             emailjs.init("YOUR_PUBLIC_KEY"); // আপনার EmailJS Public Key এখানে দিন
         })();
@@ -234,13 +227,12 @@
             event.preventDefault();
             document.getElementById('submit-btn').innerText = "অর্ডার হচ্ছে...";
             
-            // ইমেইল পাঠানোর লজিক (উদাহরণ)
+            // EmailJS এর মাধ্যমে ডাটা পাঠানো
             emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
                 .then(function() {
                     window.location.href = "success.html";
                 }, function(error) {
-                    alert("অর্ডার পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।");
-                    console.log('FAILED...', error);
+                    alert("অর্ডার পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।");
                     document.getElementById('submit-btn').innerText = "PLACE THE ORDER";
                 });
         };
