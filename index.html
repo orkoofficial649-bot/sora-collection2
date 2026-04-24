@@ -115,6 +115,7 @@
             background: linear-gradient(135deg, #ec407a, #ad1457);
             transition: all 0.3s ease;
             box-shadow: 0 10px 20px rgba(236, 64, 122, 0.2);
+            cursor: pointer;
         }
         .btn-premium:hover {
             letter-spacing: 2px;
@@ -197,27 +198,27 @@
             <main class="max-w-7xl mx-auto py-20 md:py-32 px-6">
                 <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
                     <div class="group" data-aos="fade-up">
-                        <div class="content-card overflow-hidden cursor-pointer" onclick="window.location.href='churi.html'">
-                            <div class="relative overflow-hidden aspect-[4/5]">
+                        <div class="content-card overflow-hidden">
+                            <div class="relative overflow-hidden aspect-[4/5] cursor-pointer" onclick="window.location.href='churi.html'">
                                 <img src="https://i.ibb.co.com/sdzCrYry/Polish-20260424-174620990-jpg.jpg" alt="Bangles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
                                 <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                             </div>
                             <div class="p-8 md:p-10 text-center">
                                 <h2 class="text-2xl md:text-3xl serif text-gray-800 mb-6">চুড়ি কালেকশন</h2>
-                                <button class="btn-premium text-white px-10 py-4 rounded-full font-bold tracking-widest uppercase text-xs">Explore Bangles</button>
+                                <button onclick="window.location.href='churi.html'" class="btn-premium text-white px-10 py-4 rounded-full font-bold tracking-widest uppercase text-xs">Explore Bangles</button>
                             </div>
                         </div>
                     </div>
 
                     <div class="group" data-aos="fade-up" data-aos-delay="200">
-                        <div class="content-card overflow-hidden cursor-pointer" onclick="window.location.href='sharee.html'">
-                            <div class="relative overflow-hidden aspect-[4/5]">
+                        <div class="content-card overflow-hidden">
+                            <div class="relative overflow-hidden aspect-[4/5] cursor-pointer" onclick="window.location.href='sharee.html'">
                                 <img src="https://i.ibb.co.com/Pvdj974W/Gemini-Generated-Image-z2iq5gz2iq5gz2iq.png" alt="Saree" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
                                 <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                             </div>
                             <div class="p-8 md:p-10 text-center">
                                 <h2 class="text-2xl md:text-3xl serif text-gray-800 mb-6">শাড়ি কালেকশন</h2>
-                                <button class="btn-premium text-white px-10 py-4 rounded-full font-bold tracking-widest uppercase text-xs">Explore Sarees</button>
+                                <button onclick="window.location.href='sharee.html'" class="btn-premium text-white px-10 py-4 rounded-full font-bold tracking-widest uppercase text-xs">Explore Sarees</button>
                             </div>
                         </div>
                     </div>
@@ -331,6 +332,7 @@
             offset: 100
         });
 
+        // Sticky Parallax & Watermark Animation
         window.addEventListener('scroll', function() {
             const scrollPos = window.pageYOffset;
             const heroImg = document.getElementById('heroImg');
@@ -346,6 +348,17 @@
                 letter.style.transform = `translateY(${jump}px)`;
             });
         });
+
+        /**
+         * Global Order Function
+         * Use this for any direct product links in the future
+         */
+        function orderNow(name, price, img) {
+            localStorage.setItem('selectedProductName', name);
+            localStorage.setItem('selectedProductPrice', price);
+            localStorage.setItem('selectedProductImg', img);
+            window.location.href = 'checkout.html';
+        }
     </script>
 </body>
 </html>
