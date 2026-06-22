@@ -12,9 +12,9 @@ body {
     line-height: 1.6;
 }
 
-/* Hero Section with First Image Background */
+/* Hero Section with Custom Background Image */
 .hero-section {
-    background-image: url('https://ibb.co.com/Hfd7R6hF');
+    background-image: url('https://i.ibb.co.com/KczRLjdL/Untitled-design-29.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
