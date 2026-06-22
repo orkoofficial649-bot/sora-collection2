@@ -3,98 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sora Collection - Define your grace every single day</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Sora Collection - Product Directory</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Anek+Bangla:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Fast Loading Minimalist CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Anek Bangla', sans-serif;
+            background-color: #fcf8f5;
+            color: #333;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #5c3f38;
+            margin-bottom: 10px;
+        }
+        header p {
+            color: #8c6258;
+            font-size: 1.1rem;
+        }
+        
+        /* Product Row Layout */
+        .product-row {
+            display: flex;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            margin-bottom: 35px;
+            overflow: hidden;
+            border: 1px solid #eae1ec;
+            transition: transform 0.2s;
+        }
+        .product-row:hover {
+            transform: translateY(-2px);
+        }
+        .product-img-box {
+            flex: 1;
+            max-width: 400px;
+            min-height: 350px;
+            background-color: #f9f9f9;
+        }
+        .product-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .product-details-box {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .text-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            white-space: pre-line; /* Keeps line breaks exactly as provided */
+            color: #4a4a4a;
+        }
+        
+        /* Copy Button Styling */
+        .copy-btn {
+            background-color: #8c6258;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-family: 'Anek Bangla', sans-serif;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .copy-btn:hover {
+            background-color: #5c3f38;
+        }
+        .copy-btn.copied {
+            background-color: #2e7d32;
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            .product-row {
+                flex-direction: column;
+            }
+            .product-img-box {
+                max-width: 100%;
+                height: 350px;
+            }
+            body {
+                padding: 20px 10px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <section class="hero-section">
-        <div class="hero-overlay">
-            <div class="logo-container">
-                <img src="https://i.ibb.co.com/hJfnGqDZ/Gemini-Generated-Image-uph57euph57euph5-removebg-preview.png" alt="Sora Collection Logo" class="brand-logo">
-            </div>
-            <h1 class="hero-tagline">Define your grace every single day</h1>
-        </div>
-    </section>
+    <div class="container">
+        <header>
+            <h1>Sora Collection</h1>
+            <p>আমাদের এক্সক্লুসিভ চুড়ির কালেকশন ও বিবরণী</p>
+        </header>
 
-    <section class="products-section">
-        <h2 class="section-title">Our Collections</h2>
-        <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-row">
+            <div class="product-img-box">
+                <img src="https://i.ibb.co.com/sv3DnjR8/Kashmiri-Rainbow-9.png" alt="Product 1">
+            </div>
+            <div class="product-details-box">
+                <div class="text-content" id="text-1">চুড়ি কম্বো -১ 
+
+১. ভেলভেট চুড়ি ৬ কালারের ৬ ডজন 
+২. রেইনবো চুড়ি ১ ডজন 
+৩. গাজড়া ১ জোড়া 
+৪. কুন্দন চুড়ি ৪ পিস 
+৫. পুতি চুড়ি ১ জোড়া 
+৬. কানের দুল ১ জোড়া 
+৭. মাথার কাকড়া ২ পিস 
+
+দাম ঃ- ৯৯৯ টাকা (ফিক্সড)
+ডেলিভারি চার্জ একদম ফ্রী 
+
+বি;দ্রঃ- অর্ডার কনফার্ম করতে হলে অবশ্যই ১৫০ টাকা অগ্রীম পেমেন্ট করতে হবে তাছাড়া অর্ডার কনফার্ম হবে না 
+
+ধন্যবাদ, 
+Sora Collection Team.</div>
+                <button class="copy-btn" onclick="copyText('text-1', this)">Copy Details</button>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-row">
+            <div class="product-img-box">
+                <img src="https://i.ibb.co.com/TxgTSjKf/Kashmiri-Rainbow-8.png" alt="Product 2">
+            </div>
+            <div class="product-details-box">
+                <div class="text-content" id="text-2">কাশ্মীরি চুড়ি ১২ পিস সাথে পাবেন ৪ পিস ঘুঙুর চুড়ি 
+
+দাম ঃ- ৫৯৯ টাকা (ফিক্সড)
+
+ডেলিভারি চার্জ ঢাকার ভিতরে ১০০ টাকা ঢাকার বাহিরে ১৩০ টাকা</div>
+                <button class="copy-btn" onclick="copyText('text-2', this)">Copy Details</button>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-row">
+            <div class="product-img-box">
+                <img src="https://i.ibb.co.com/zWxWzC9t/Kashmiri-Rainbow-7.png" alt="Product 3">
+            </div>
+            <div class="product-details-box">
+                <div class="text-content" id="text-3">কাশ্মীরি চুড়ি ১২ পিস সাথে পাবেন ৪ পিস ঘুঙুর চুড়ি 
+
+দাম ঃ- ৫৪৯ টাকা (ফিক্সড)
+
+ডেলিভারি চার্জ ঢাকার ভিতরে ১০০ টাকা ঢাকার বাহিরে ১৩০ টাকা</div>
+                <button class="copy-btn" onclick="copyText('text-3', this)">Copy Details</button>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-row">
+            <div class="product-img-box">
+                <img src="https://i.ibb.co.com/DD7RDkVh/Kashmiri-Rainbow-6.png" alt="Product 4">
+            </div>
+            <div class="product-details-box">
+                <div class="text-content" id="text-4">কাশ্মীরি চুড়ি ১২ পিস সাথে পাবেন ৪ পিস ঘুঙুর চুড়ি 
+
+দাম ঃ- ৫৪৯ টাকা (ফিক্সড)
+
+ডেলিভারি চার্জ ঢাকার ভিতরে ১০০ টাকা ঢাকার বাহিরে ১৩০ টাকা</div>
+                <button class="copy-btn" onclick="copyText('text-4', this)">Copy Details</button>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-row">
+            <div class="product-img-box">
+                <img src="https://i.ibb.co.com/xK0tjjpk/Kashmiri-Rainbow-5.png" alt="Product 5">
+            </div>
+            <div class="product-details-box">
+                <div class="text-content" id="text-5">কাশ্মীরি চুড়ি ১২ পিস সাথে পাবেন ৪ পিস ঘুঙুর চুড়ি 
+
+দাম ঃ- ৩৯৯ টাকা (ফিক্সড)
+
+ডেলিভারি চার্জ ঢাকার ভিতরে ১০০ টাকা ঢাকার বাহিরে ১৩০ টাকা</div>
+                <button class="copy-btn" onclick="copyText('text-5', this)">Copy Details</button>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-row">
+            <div class="product-img-box">
+                <img src="https://i.ibb.co.com/PzFvqcQj/Kashmiri-Rainbow-4.png" alt="Product 6">
+            </div>
+            <div class="product-details-box">
+                <div class="text-content" id="text-6">কাশ্মীরি চুড়ি ১২ পিস সাথে পাবেন ৪ পিস ঘুঙুর চুড়ি 
+
+দাম ঃ- ৫৮৯ টাকা (ফিক্সড)
+
+ডেলিভারি চার্জ ঢাকার ভিতরে ১০০ টাকা ঢাকার বাহিরে ১৩০ টাকা</div>
+                <button class="copy-btn" onclick="copyText('text-6', this)">Copy Details</button>
+            </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-row">
+            <div class="product-img-box">
+                <img src="https://i.ibb.co.com/6cVmQSgv/Kashmiri-Rainbow-3.png" alt="Product 7">
+            </div>
+            <div class="product-details-box">
+                <div class="text-content" id="text-7">কাশ্মীরি চুড়ি ১২ পিস সাথে পাবেন ৪ পিস ঘুঙুর চুড়ি 
+
+দাম ঃ- ৫৪৯ টাকা (ফিক্সড)
+
+ডেলিভারি চার্জ ঢাকার ভিতরে ১০০ টাকা ঢাকার বাহিরে ১৩০ টাকা</div>
+                <button class="copy-btn" onclick="copyText('text-7', this)">Copy Details</button>
+            </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-row">
+            <div class="product-img-box">
+                <img src="https://i.ibb.co.com/wFvyJLpw/Kashmiri-Rainbow-2.png" alt="Product 8">
+            </div>
+            <div class="product-details-box">
+                <div class="text-content" id="text-8">কাশ্মীরি চুড়ি ১২ পিস সাথে পাবেন ৪ পিস ঘুঙুর চুড়ি 
+
+দাম ঃ- ৫৪৯ টাকা (ফিক্সড)
+
+ডেলিভারি চার্জ ঢাকার ভিতরে ১০০ টাকা ঢাকার বাহিরে ১৩০ টাকা</div>
+                <button class="copy-btn" onclick="copyText('text-8', this)">Copy Details</button>
+            </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-row">
+            <div class="product-img-box">
+                <img src="https://i.ibb.co.com/JPRgyDP/Kashmiri-Bangles-9.png" alt="Product 9">
+            </div>
+            <div class="product-details-box">
+                <div class="text-content" id="text-9">জেলি চুড়ি ১২ পিস সাথে পাবেন ৪ পিস ঘুঙুর চুড়ি 
+দাম ঃ- ৪৯৯ টাকা 
+
+ডেলিভারি চার্জ ঢাকার ভিতরে ১০০ টাকা ঢাকার বাহিরে ১৩০ টাকা</div>
+                <button class="copy-btn" onclick="copyText('text-9', this)">Copy Details</button>
+            </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-row">
+            <div class="product-img-box">
+                <img src="https://i.ibb.co.com/8F0642b/Kashmiri-Bangles-7.png" alt="Product 10">
+            </div>
+            <div class="product-details-box">
+                <div class="text-content" id="text-10">জরি কাচের চুড়ি ১২ পিস সাথে পাবেন ৪ পিস ঘুঙুর চুড়ি 
+দামঃ- ২৯৯ টাকা 
+
+ডেলিভারি চার্জ ঢাকার ভিতরে ১০০ টাকা ঢাকার বাহিরে ১৩০ টাকা</div>
+                <button class="copy-btn" onclick="copyText('text-10', this)">Copy Details</button>
+            </div>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product-row">
+            <div class="product-img-box">
+                <img src="https://i.ibb.co.com/bgPnYDvN/Kashmiri-Rainbow-10.png" alt="Product 11">
+            </div>
+            <div class="product-details-box">
+                <div class="text-content" id="text-11">কাশ্মীরি চুড়ি কম্বো -২ 
+কাশ্মীরি চুড়ি ৬ ডিজাইন এর ৬ ডজন সাথে ২ পিস করে ১২ পিস ঘুঙুর 
+দামঃ- ২৭৯৯ টাকা (ফিক্সড) 
+ডেলিভারি চার্জ একদম ফ্রী
+
+বি;দ্রঃ- এই কম্বো নিতে হলে অবশ্যই ৫০০ টাকা অগ্রীম পেমেন্ট করতে হবে 
+
+ধন্যবাদ,
+Sora Collection Team.</div>
+                <button class="copy-btn" onclick="copyText('text-11', this)">Copy Details</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // High Performance Copy Function
+        function copyText(elementId, button) {
+            const textToCopy = document.getElementById(elementId).innerText;
             
-            <div class="product-card">
-                <div class="img-container">
-                    <img src="https://i.ibb.co.com/hFbJ2BfK/Polish-20260424-175036321-jpg.jpg" alt="Kashmiri churi">
-                </div>
-                <h3>Kashmiri churi</h3>
-                <button class="view-btn">View Details</button>
-            </div>
-
-            <div class="product-card">
-                <div class="img-container">
-                    <img src="https://i.ibb.co.com/XkGFR8V0/Untitled-design-45-jpg.jpg" alt="Churi combo pack">
-                </div>
-                <h3>Churi combo pack</h3>
-                <button class="view-btn">View Details</button>
-            </div>
-
-            <div class="product-card">
-                <div class="img-container">
-                    <img src="https://i.ibb.co.com/prrpx9st/Whats-App-Image-2026-04-24-at-12-38-19-AM.jpg" alt="Normal churi">
-                </div>
-                <h3>Normal churi</h3>
-                <button class="view-btn">View Details</button>
-            </div>
-
-            <div class="product-card">
-                <div class="img-container">
-                    <img src="https://i.ibb.co.com/39CzbmmW/1000119143-jpg.jpg" alt="jelly churi">
-                </div>
-                <h3>jelly churi</h3>
-                <button class="view-btn">View Details</button>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="story-section">
-        <div class="story-container">
-            <p class="trend-text">
-                'কাশ্মীরি চুড়ি' মূলত কোনো ঐতিহাসিক বা রূপকথার লিখিত গল্প নয়, বরং এটি বর্তমান সময়ের একটি সোশ্যাল মিডিয়া ট্রেন্ড এবং ভাইরাল ফ্যাশন অনুষঙ্গ। রঙের বৈচিত্র্য, পাথর ও পুঁতির কারুকাজ এবং ছোট ছোট ঘুঙ্গুর বা ঝুলন্ত ঝুমকার ছোঁয়ায় এটি তৈরি হয়।
-            </p>
-            <p class="trend-text">
-                হাতে পরার পর হালকা শব্দ এবং রাজকীয় লুকের কারণে এটি দক্ষিণ এশিয়াজুড়ে (বিশেষ করে বাংলাদেশ ও ভারতে) ব্যাপক জনপ্রিয়তা পেয়েছে। এটি কোনো নির্দিষ্ট অঞ্চলের ঐতিহ্যবাহী গহনা না হলেও, কাশ্মীরি পোশাকের রঙের ঐতিহ্য থেকে অনুপ্রাণিত হয়ে এর নাম দেওয়া হয়েছে।
-            </p>
-            <div class="divider"></div>
-            <p class="sora-story">
-                আমাদের <strong>Sora Collection</strong> এর গল্প টা একটু অন্যরকম। আমরা চাই দেশের প্রতি টা মানুষ যেনো আমাদের চুড়ি গুলো হাতে পরতে পারে। আশা করছি আমরা আরো কিছু পণ্য নিয়ে আপনাদের সামনে আসবো (যেমনঃ- চুড়ি, শাড়ি, চাদর, টু-পিস, থ্রি-পিস)।
-            </p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <h3>Connect with us</h3>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/share/1D1QiEqX9R/" target="_blank" class="social-icon fb" title="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/soracollection.xyz" target="_blank" class="social-icon insta" title="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com/@sora.collection1/photo/7636218490688490772?_r=1&u_code=eemkl386a7kegd&preview_pb=0&sharer_language=en&_d=em0m2k62d59303&share_item_id=7636218490688490772&source=h5_m&timestamp=1782143780&user_id=7385142241389446150&sec_user_id=MS4wLjABAAAATPjxD_PhaWDeOqA_U3nVV36-OJxmJ6CVwmDD3OmgbzKzlHYVEyGcToaxRUVSfsmx&aweme_type=150&pic_cnt=7&social_share_type=14&ug_photo_idx=0&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7653738650928711440&share_link_id=1aa20e05-3fda-4d08-9b15-7ac4d61f2d0e&share_app_id=1233&ugbiz_name=UNKNOWN&ug_btm=b8727%2Cb2878&sp_root_share_link_id=1aa20e05-3fda-4d08-9b15-7ac4d61f2d0e&link_reflow_popup_iteration_sharer=%7B%22click_empty_to_play%22%3A1%2C%22dynamic_cover%22%3A1%2C%22follow_to_play_duration%22%3A-1.0%2C%22profile_clickable%22%3A1%7D&panel_source_v2=share_panel&share_enter_from=personal_homepage&item_author_type=1&enable_checksum=1&sp_level=1&sp_root_u=eemkl386a7kegd&sp_root_d=em0m2k62d59303" target="_blank" class="social-icon tiktok" title="TikTok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://wa.me/message/P5OZL4WTUGJSL1" target="_blank" class="social-icon whatsapp" title="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
-            <p class="copyright">&copy; 2026 Sora Collection. All Rights Reserved.</p>
-        </div>
-    </footer>
-
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Change button appearance to success state
+                const originalText = button.innerText;
+                button.innerText = "Copied! ✅";
+                button.classList.add("copied");
+                
+                // Reset button text after 2 seconds
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove("copied");
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
 </body>
 </html>
